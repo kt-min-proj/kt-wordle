@@ -14,3 +14,5 @@ Wordle 퀴즈
 - `pip install -r requirements.txt` 로 requirements.txt 설치
 
 - [*] Mysql Host 서버 연결완료
+
+a
