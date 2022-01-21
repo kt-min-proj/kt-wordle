@@ -29,4 +29,4 @@ Wordle 퀴즈
 - python 3.8 `conda install python=3.8` 로 버전 변경
 - `pip install -r requirements.txt` 로 requirements.txt 설치
 
-- [*] Mysql Host 서버 연결완료
+- [x] Mysql Host 서버 연결완료
