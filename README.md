@@ -2,6 +2,16 @@
 
 Wordle 퀴즈
 
+- [ ] User
+- [ ] Signup
+- [ ] Logout
+- [ ] Logout
+- [ ] Wordle
+- [ ] Calendar `date search data`
+- [ ] Put data, Table reset under 10
+
+---
+
 ## NOTE
 
 꼭 브랜치 만들어서 pull request 넣어주세요.
