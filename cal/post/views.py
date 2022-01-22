@@ -1,5 +1,16 @@
-from django.http import HttpResponse
+from django.core import serializers
+from django.http import HttpResponse, JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from rest_framework.decorators import api_view
 
-# Create your views here.
-def index(request):
-    return HttpResponse("abcd")
+
+@csrf_exempt
+def calendar_view(request):
+    # output = Calendar.objects.all()
+    # output_json = serializers.serialize("json", output)
+    # print(output_json)
+    return JsonResponse(
+        """
+    {"date":"123"}
+        """
+    )
