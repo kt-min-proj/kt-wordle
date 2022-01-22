@@ -29,4 +29,6 @@ jobs:
       - run: |
           pip install black
           black .
+          git config user.name 'repository'
+          git config user.email 'githubaction@noreply.github.com'
           git commit -am 'Auto Format ( black )'
