@@ -23,4 +23,5 @@ jobs:
           black .
           git config user.name 'repository'
           git config user.email 'githubaction@noreply.github.com'
-          git commit -am 'Auto Format ( black )'
+          git commit -a --amend
+          git push
