@@ -6,11 +6,8 @@ from rest_framework.decorators import api_view
 
 @csrf_exempt
 def calendar_view(request):
-    # output = Calendar.objects.all()
-    # output_json = serializers.serialize("json", output)
-    # print(output_json)
-    return JsonResponse(
-        """
-    {"date":"123"}
-        """
-    )
+    if request.method == "POST":
+        print("This is Post")
+    # TODO 요청값 dict로 뽑아내기
+    json = {"hello": "123"}
+    return JsonResponse(json)
