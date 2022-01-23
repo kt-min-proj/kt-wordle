@@ -1,15 +1,29 @@
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
-  axios
-    .post("/calendar/post/", {
-      date: "1234",
-    })
-    .then(
-      (res) => {
-        console.log(res.data);
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+  function submitData() {
+    const date_f = document.getElementById("date").value;
+    console.log(date_f);
+    axios
+      .post("/calendar/post/", {
+        date: date_f,
+      })
+      .then(
+        (res) => {
+          console.log(res.data);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+  }
 </script>
+<form name="myForm" id="myForm" onsubmit="return posting()">
+  <input name="date" id="date" type="date" />
+  <input
+    class="button"
+    type="submit"
+    id="submit"
+    value="submit"
+    onclick="submitData()"
+  />
+</form>
