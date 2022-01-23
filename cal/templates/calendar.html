@@ -1,6 +1,6 @@
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
-  function submitData() {
+  const submitData = async () => {
     const date_f = document.getElementById("date").value;
     console.log(date_f);
     axios
@@ -15,9 +15,9 @@
           console.log(error);
         }
       );
-  }
+  };
 </script>
-<form name="myForm" id="myForm" onsubmit="return posting()">
+<form name="myForm" id="myForm" onSubmit="return false" method="post">
   <input name="date" id="date" type="date" />
   <input
     class="button"
