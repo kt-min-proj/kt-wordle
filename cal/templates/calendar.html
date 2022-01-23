@@ -1,5 +1,6 @@
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
+  var data;
   const submitData = async () => {
     const date_f = document.getElementById("date").value;
     document.getElementById("date_name").text = date_f;
@@ -9,7 +10,7 @@
       })
       .then(
         (res) => {
-          console.log(res.data);
+          data = res.data;
         },
         (error) => {
           console.log(error);
