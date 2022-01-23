@@ -2,7 +2,7 @@
 <script>
   const submitData = async () => {
     const date_f = document.getElementById("date").value;
-    console.log(date_f);
+    document.getElementById("date_name").text = date_f;
     axios
       .post("/calendar/post/", {
         date: date_f,
@@ -27,3 +27,5 @@
     onclick="submitData()"
   />
 </form>
+
+<a id="date_name"></a>
