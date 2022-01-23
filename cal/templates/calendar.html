@@ -1,13 +1,15 @@
-<html lang="ko">
-  <head>
-    <title>calendar</title>
-  </head>
-  <body>
-    <form method="post">
-      {% csrf_token %}
-      <input type="date" id='date' name='date'></input>
-      <button type="submit"> SUBMIT </button>
-    </form>
-    {{ data }}
-  </body>
-</html>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+  axios
+    .post("/calendar/post/", {
+      date: "1234",
+    })
+    .then(
+      (res) => {
+        console.log(res.data);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+</script>

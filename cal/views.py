@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 # Create your views here.
 def index(request):
-    print(request.POST.get("date"))
+    print(request.body)
     a = request.POST.get("date")
     return render(
         request=request,
