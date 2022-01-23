@@ -1,0 +1,28 @@
+table {
+  clear: both;
+}
+th {
+  height: 50px;
+  width: 70px;
+  background-color: gray;
+  border-radius: 5%;
+}
+.colToday {
+  background-color: #ffa07a !important;
+}
+.date {
+  text-align: center;
+  height: 50px;
+  width: 70px;
+  background-color: #fffdc5;
+}
+input {
+  height: 50px;
+  width: 70px;
+  border: none;
+  background-color: orange;
+  font-size: 30px;
+}
+.year_mon {
+  font-size: 25px;
+}
