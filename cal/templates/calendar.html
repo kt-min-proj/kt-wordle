@@ -3,9 +3,11 @@
     <title>calendar</title>
   </head>
   <body>
-    <form method="/post">
+    <form method="post">
+      {% csrf_token %}
       <input type="date" id='date' name='date'></input>
       <button type="submit"> SUBMIT </button>
     </form>
+    {{ data }}
   </body>
 </html>

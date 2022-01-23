@@ -2,9 +2,10 @@ from django.shortcuts import render
 
 # Create your views here.
 def index(request):
-    print(request.POST.get("my_date_field"))
+    print(request.POST.get("date"))
+    a = request.POST.get("date")
     return render(
         request=request,
         template_name="calendar.html",
-        context={},
+        context={"data": a},
     )
