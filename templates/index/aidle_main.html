@@ -1,7 +1,12 @@
 <head>
   <title> AIDLE </title>
   {% load static %}
-  <link href="{% static 'index/aidle.css' %}" rel="stylesheet" type="text/css"/>
+  <link href="{% static 'index/aidle.css' %}"
+        rel="stylesheet"
+        type="text/css"/>
+  <link href="{% static 'calendar/calendar.css' %}"
+        rel="stylesheet"
+        type="text/css"/>
   <meta name='description' content="aidle">
 </head>
 
@@ -9,20 +14,28 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src='/static/calendar/calendar.js'></script>
-<link href="{% static 'calendar/calendar.css' %}"/>
+<script type="text/javascript">
+  window.onload = function () {
+    document.querySelector(".aidl_login")
+        .addEventListener("click", function () {
+          document.querySelector(".aidl_login").style.display = "none"
+        })
+  }
+</script>
 <img src="{% static 'index/title.PNG' %}"
      style="margin-left:600px; margin-top : 50px">
-<div class="aidl_login" style="display : flex">
+<div class="aidl_login" style="display: flex">
   <div class="aidl_login_inner">
     <div class="IDinput">
-      <div style="color:rgba(130,128,128,1); font-size: 20px;"><b>ID</b></div>
+      <div style="color:rgba(130,128,128,1); font-size: 20px;"><b>ID</b>
+      </div>
       <input type="text" name="user_id"></div>
     <div class="PWinput">
-      <div style="color:rgba(130,128,128,1); font-size: 20px;"><b>PASSWORD</b>
-      </div>
+      <div style="color:rgba(130,128,128,1); font-size: 20px;">
+        <b>PASSWORD</b></div>
       <input type="password" name="password"></div>
     <div>
-      <input class="butt" type="submit" id="close" value="LOGIN">
+      <input class="button" type="submit" id="close" value="LOGIN">
     </div>
   </div>
   <div style="position : relative; top : 170px; left : -100px">
@@ -40,9 +53,15 @@
     <table id='calendar'>
       <thead>
       <tr>
-        <th><input name="preMon" type="button" value="<"/></th>
+        <th><input name="preMon"
+                   class="preMon"
+                   type="button"
+                   value="<"/></th>
         <th colspan="5" class="year_month"></th>
-        <th><input name="nextMon" type="button" value=">"/></th>
+        <th><input name="nextMon"
+                   class="nextMon"
+                   type="button"
+                   value=">"/></th>
       </tr>
       <tr>
         <th>일</th>
@@ -189,12 +208,3 @@
   </div>
 </div>
 </body>
-
-
-<script>
-  const close = document.getElementById("close");
-  const modal = document.querySelector(".aidl_login");
-  close.onclick = () => {
-    modal.style.display = "none";
-  };
-</script>
