@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="./calendar/calendar.js"></script>
+    <link rel="stylesheet" href="./calendar/calendar.css" />
+    <title>calendar</title>
+  </head>
+  <body>
+    <table id="calendar">
+      <thead>
+        <tr>
+          <th><input name="preMon" type="button" value="<" /></th>
+          <th colspan="5" class="year_mon"></th>
+          <th><input name="nextMon" type="button" value=">" /></th>
+        </tr>
+        <tr>
+          <th>일</th>
+          <th>월</th>
+          <th>화</th>
+          <th>수</th>
+          <th>목</th>
+          <th>금</th>
+          <th>토</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <a id="date_name"></a>
+  </body>
+</html>

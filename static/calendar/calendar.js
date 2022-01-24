@@ -41,7 +41,7 @@ $(function () {
       lastDate[1] = 29;
     }
 
-    $(".year_mon").text(nowYear + " - " + (nowMonth + 1));
+    $(".year_month").text(nowYear + " - " + (nowMonth + 1));
 
     for (i = 0; i < firstDay; i++) {
       //첫번째 줄 빈칸
@@ -53,6 +53,7 @@ $(function () {
       if (plusDate == 0) {
         $("#calendar tbody:last").append("<tr></tr>");
       }
+      let i = '1';
       $("#calendar tbody:last").append(
         `<td><input class='date' name='date' type='button' value=${i} /></td>`
       );
