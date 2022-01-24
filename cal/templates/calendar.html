@@ -1,19 +1,33 @@
-<body>
-  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-  <!-- TODO css를 이용한 캘린더 만들기 -->
-  {% load static %}
-  <script src="{% static 'calendar/calendar.js' %}"></script>
-
-  <form name="myForm" id="myForm" onSubmit="return false" method="post">
-    <input name="date" id="date" type="date" />
-    <input
-      class="button"
-      type="submit"
-      id="submit"
-      value="submit"
-      onclick="submitData()"
-    />
-  </form>
-
-  <a id="date_name"></a>
-</body>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    {% load static %}
+    <script src="{% static 'calendar/calendar.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'calendar/calendar.css' %}" />
+    <title>calendar</title>
+  </head>
+  <body>
+    <table id="calendar">
+      <thead>
+        <tr>
+          <th><input name="preMon" type="button" value="<" /></th>
+          <th colspan="5" class="year_mon"></th>
+          <th><input name="nextMon" type="button" value=">" /></th>
+        </tr>
+        <tr>
+          <th>일</th>
+          <th>월</th>
+          <th>화</th>
+          <th>수</th>
+          <th>목</th>
+          <th>금</th>
+          <th>토</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </body>
+</html>
