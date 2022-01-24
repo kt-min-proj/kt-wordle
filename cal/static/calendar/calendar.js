@@ -86,7 +86,8 @@ const submitData = async (data) => {
   axios.post("/calendar/post/", {
     date: data,
   }).then((res) => {
-    console.log(res.data)
+    console.log(res.data);
+    document.getElementById("date_name").text = res.data.date;
   },(error) => {
     console.log(error)
   })
