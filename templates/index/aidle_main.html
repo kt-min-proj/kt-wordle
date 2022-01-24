@@ -1,10 +1,10 @@
 <head>
   <title> AIDLE </title>
   {% load static %}
-  <link href="{% static 'index/aidle.css' %}"
+  <link href={% static 'index/aidle.css' %}
         rel="stylesheet"
         type="text/css"/>
-  <link href="{% static 'calendar/calendar.css' %}"
+  <link href={% static 'calendar/calendar.css' %}
         rel="stylesheet"
         type="text/css"/>
   <meta name='description' content="aidle">
@@ -13,7 +13,7 @@
 <body style="background-color: rgba(223,223,223,1);">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-<script src='/static/calendar/calendar.js'></script>
+<script src={% static "calendar/calendar.js" %}></script>
 <script type="text/javascript">
   window.onload = function () {
     document.querySelector(".aidl_login")
