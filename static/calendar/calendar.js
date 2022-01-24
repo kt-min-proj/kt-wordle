@@ -53,7 +53,7 @@ $(function () {
       if (plusDate == 0) {
         $("#calendar tbody:last").append("<tr></tr>");
       }
-      let i = '1';
+
       $("#calendar tbody:last").append(
         `<td><input class='date' name='date' type='button' value=${i} /></td>`
       );

@@ -8,7 +8,8 @@
 <body style="background-color: rgba(223,223,223,1);">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-  {% comment %} <script src='/static/calendar/calendar.js'></script> {% endcomment %}
+  <script src='/static/calendar/calendar.js'></script>
+  <link href='/static/calendar/calendar.css' />
     <img src="{% static 'index/title.PNG' %}" style="margin-left:600px; margin-top : 50px">
     <div class="aidl_login" style="display : flex">
         <div class="aidl_login_inner">
@@ -54,6 +55,7 @@
             </thead>
             <tbody></tbody>
         </table>
+        <a id="date_name"></a>
         </div>
     </div>
     <div class="rankar">
