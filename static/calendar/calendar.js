@@ -54,7 +54,7 @@ $(function () {
         $("#calendar tbody:last").append("<tr></tr>");
       }
       $("#calendar tbody:last").append(
-        `<td><input class='date' type='button' value=${i} /></td>`
+        `<td><input class='date' name='date' type='button' value=${i} /></td>`
       );
     }
     if ($("#calendar > tbody > td").length % 7 != 0) {
@@ -73,6 +73,22 @@ $(function () {
         $("td > input.date").eq(index).addClass("colToday");
       }
     });
+    $("input[name=date]").click(function (index){
+      clicked_Days = index.currentTarget.value
+      submitData(`${nowYear}-${nowMonth + 1}-${clicked_Days}`)
+    })
+
   }
   buildCalendar();
 });
+
+const submitData = async (data) => {
+  axios.post("/calendar/post/", {
+    date: data,
+  }).then((res) => {
+    console.log(res.data);
+    document.getElementById("date_name").text = res.data.date;
+  },(error) => {
+    console.log(error)
+  })
+}
