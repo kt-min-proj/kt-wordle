@@ -6,6 +6,10 @@
 </head>
 
 <body style="background-color: rgba(223,223,223,1);">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src='/static/calendar/calendar.js'></script>
+  <link href="{% static 'calendar/calendar.css'%}" />
     <img src="{% static 'index/title.PNG' %}" style="margin-left:600px; margin-top : 50px">
     <div class="aidl_login" style="display : flex">
         <div class="aidl_login_inner">
@@ -31,15 +35,27 @@
             <span></span>
             <span></span>
         </label>
-        <div class="sidebar">
-            <div style="margin-top : 35%; margin-left:15%">
-                <input type="date">
-                <div class="calender">
-                    <div class="aidl_text" style="color:rgba(130,128,128,1); font-size: 35px; margin-top : 15%;">
-                        WORD
-                    </div>
-                </div>
-            </div>
+        <div class="sidebar" >
+          <table id='calendar'>
+            <thead>
+              <tr>
+                <th><input name="preMon" type="button" value="<" /></th>
+                <th colspan="5" class="year_month"></th>
+                <th><input name="nextMon" type="button" value=">" /></th>
+              </tr>
+              <tr>
+                <th>일</th>
+                <th>월</th>
+                <th>화</th>
+                <th>수</th>
+                <th>목</th>
+                <th>금</th>
+                <th>토</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <a id="date_name"></a>
         </div>
     </div>
     <div class="rankar">
