@@ -1,11 +1,12 @@
 <head>
     <title> AIDLE </title>
-    <link href="aidle.css" rel="stylesheet" type="text/css" />
+    {% load static %}
+    <link href="{% static 'index/aidle.css' %}" rel="stylesheet" type="text/css" />
     <meta name='description' content="aidle">
 </head>
 
 <body style="background-color: rgba(223,223,223,1);">
-    <img src="title.PNG" style="margin-left:600px; margin-top : 50px">
+    <img src="{% static 'index/title.PNG' %}" style="margin-left:600px; margin-top : 50px">
     <div class="aidl_login" style="display : flex">
         <div class="aidl_login_inner">
             <div class = "IDinput">

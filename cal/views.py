@@ -7,14 +7,6 @@ def index(request):
     a = request.POST.get("date")
     return render(
         request=request,
-        template_name="calendar.html",
+        template_name="calendar/calendar.html",
         context={"data": a},
-    )
-
-
-def cal(request):
-    return render(
-        request=request,
-        template_name="cal.html",
-        context={},
     )
