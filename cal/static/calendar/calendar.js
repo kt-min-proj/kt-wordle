@@ -54,7 +54,7 @@ $(function () {
         $("#calendar tbody:last").append("<tr></tr>");
       }
       $("#calendar tbody:last").append(
-        `<td><input class='date' type='button' value=${i} /></td>`
+        `<td><input class='date' name='date' type='button' value=${i} /></td>`
       );
     }
     if ($("#calendar > tbody > td").length % 7 != 0) {
@@ -73,6 +73,11 @@ $(function () {
         $("td > input.date").eq(index).addClass("colToday");
       }
     });
+    $("input[name=date]").click(function (index){
+      clicked_Days = index.currentTarget.value
+      console.log(`${nowYear}-${nowMonth + 1}-${clicked_Days}`)
+    })
+
   }
   buildCalendar();
 });
