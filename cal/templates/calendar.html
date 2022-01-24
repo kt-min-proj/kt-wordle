@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     {% load static %}
     <script src="{% static 'calendar/calendar.js' %}"></script>
     <link rel="stylesheet" href="{% static 'calendar/calendar.css' %}" />
@@ -29,5 +30,6 @@
       </thead>
       <tbody></tbody>
     </table>
+    <a id="date_name"></a>
   </body>
 </html>

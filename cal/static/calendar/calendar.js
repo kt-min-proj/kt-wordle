@@ -75,9 +75,19 @@ $(function () {
     });
     $("input[name=date]").click(function (index){
       clicked_Days = index.currentTarget.value
-      console.log(`${nowYear}-${nowMonth + 1}-${clicked_Days}`)
+      submitData(`${nowYear}-${nowMonth + 1}-${clicked_Days}`)
     })
 
   }
   buildCalendar();
 });
+
+const submitData = async (data) => {
+  axios.post("/calendar/post/", {
+    date: data,
+  }).then((res) => {
+    console.log(res.data)
+  },(error) => {
+    console.log(error)
+  })
+}
