@@ -1,0 +1,223 @@
+.aidl_box {
+    position : relative;
+    margin-top : 20px;
+    display : flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+}
+.wrap5 {
+    width:450px;
+    left : 525px;
+}
+.wrap6 {
+    width :530px;
+    left : 485px;
+}
+.wrap7 {
+    width:630px;
+    left : 435px;
+}
+.wrap8 {
+    width:710px;
+    left : 395px;
+}
+.wrap9 {
+    width:820px;
+    left : 340px;
+}
+.check {
+    background-color: rgba(130,128,128,1);
+}
+.wrong {
+    background-color: rgba(228,145,145,1);
+}
+.correct {
+    background-color: rgba(65,180,176,1);
+}
+.normal {
+    background-color: rgba(197,197,197,1)
+}
+.box {
+    position:static;
+    width: 80px;
+    height: 80px;
+    border-radius: 1rem;
+}
+.aidl_text {
+    text-align: center;
+    font-family:"Gill Sans MT";
+    font-size: 55px;; 
+    color:white;
+    padding-top : 7px;
+}
+.sideicon {
+    width : 40px;
+    position : fixed;
+    top : 40px;
+    left:  1450px;
+}
+
+input[id = "menuicon"] {
+    display : none;
+}
+input[id = "menuicon"] + label {
+    display : block;
+    width : 40px;
+    height : 35px;
+    position : relative;
+    cursor : pointer;
+}
+input[id = "menuicon"] + label span {
+    display : block;
+    width : 100%;
+    height : 3px;
+    position : absolute;
+    cursor : pointer;
+    border-radius: 30px;
+    background:#000;
+    transition : all .35s;
+}
+input[id = "menuicon"] + label span:nth-child(1) {
+    top:0;
+}
+input[id = "menuicon"] + label span:nth-child(2) {
+    top:50%;
+    transform:translateY(-50%);
+}
+input[id = "menuicon"] + label span:nth-child(3) {
+    bottom:0;
+}
+input[id = "menuicon"]:checked + label {
+    z-index : 2;
+}
+input[id = "menuicon"]:checked + label span:nth-child(1) {
+    top : 50%;
+    transform : translateY(-50%) rotate(45deg);
+}
+input[id = "menuicon"]:checked + label span:nth-child(2) {
+    opacity: 0;
+}
+input[id = "menuicon"]:checked + label span:nth-child(3) {
+    bottom : 50%;
+    transform : translateY(50%) rotate(-45deg);
+}
+.sidebar{
+    width : 300px;
+    height : 100%;
+    background-color: #E9E9E9;
+    position : fixed;
+    top : 0;
+    right : -300px;
+    z-index : 1;
+    border-radius: 30px;
+    border : 3px solid rgba(130,128,128,1);
+    box-sizing : border-box;
+    transition : all .35s;
+}
+input[id = "menuicon"]:checked + label + div {
+    right : 0px;
+}
+
+.rankar{
+    width : 280px;
+    height : 450px;
+    background-color: #E9E9E9;
+    position : fixed;
+    top : 120px;
+    left : 25px;
+    border-radius: 30px;
+    border : 4px solid rgba(130,128,128,1);
+    box-sizing : border-box;
+}
+
+.calender {
+    width : 240px;
+    height : 450px;
+    background-color: #E9E9E9;
+    position : absolute;
+    top : 150px;
+    left : 30px;
+    border-radius: 30px;
+    border : 4px dashed rgba(130,128,128,1);
+    box-sizing : border-box;
+}
+.aidl_login{
+    position : fixed;
+    top :0px;
+    left:0px;
+    width : 100%;
+    height :100%;
+    display : flex;
+    justify-content: center;
+    align-items: center;
+    z-index:3;
+    background-color : rgba(0,0,0,0.7);
+    animation : scaleUp 0.5s;
+}
+.aidl_login_inner{
+    width : 500px;
+    height : 400px;
+    background-color : rgba(197,197,197,1);
+    border-radius : 30px;
+    border : 7px solid rgba(130,128,128,1);
+}
+
+button{
+    position : fixed;
+    margin-top:150px; 
+    margin-left:165px; 
+    border-radius : 10px;
+    cursor : pointer;
+    background-color:rgba(65,180,176,1) ;
+    border : 5px solid rgba(130,128,128,1);
+}
+button:hover {
+    box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+}
+button:active {
+    background-color: rgba(40, 116, 113, 1);
+    box-shadow:0 0 0 rgba(0,0,0,0);
+    border : 7px solid rgba(130,128,128,1);
+}
+
+.IDinput {
+    position: relative;
+    top : 60px;
+    left : 140px;
+}
+
+.PWinput{
+    position :relative;
+    top : 80px;
+    left : 140px;
+}
+
+input {
+    background-color: white;
+    border-radius: 5px;
+    height : 30px;
+    font-family:'Gill Sans MT';
+    font-size : 20px;
+}
+
+@keyframes scaleUp {
+    from {
+        transform : scale(0.1);
+        opacity : 0.1
+    }
+    to {
+        transform : scale(1);
+        opacity : 1;
+    }  
+}
+@keyframes scaleDown {
+    from {
+        transform : scale(1);
+        opacity : 1;
+    }
+    to {
+        transform : scale(0.1);
+        opacity : 0.1
+    }  
+}
