@@ -62,12 +62,14 @@
       
       <datalist id="class_options">
           {% for class in classes %}
+              {% comment %} <option value="{{ class }}" label="{{ class }}"></option> {% endcomment %}
               <option value="{{ forloop.counter0 }}" label="{{ class }}"></option>
           {% endfor %}
       </datalist>
       <div>
-          <input type="submit" value="SIGNUP"
+          <input type="submit" value="SIGNUP" id="submit"
           style="position:absolute; top : 600px; left : 680px; background-color:rgba(65,180,176,1) ; height : 60px; width : 150px;">
       </div>
   </form>
 </body>
+

@@ -18,18 +18,7 @@ def index_test(request):
 
 
 def signup_custom(request):
-    classes = [
-        "수도권1반",
-        "수도권2반",
-        "수도권3반",
-        "수도권4반",
-        "수도권5반",
-        "강원권1반",
-        "충남/충북권1반",
-        "대구/경북권1반",
-        "전남/전북권1반",
-        "부산/경남권1반",
-    ]
+    classes = [user_class[1] for user_class in User.CLASS_CHOICES]
 
     if request.method == "POST":
         form = SignUpForm(request.POST)
@@ -44,7 +33,6 @@ def signup_custom(request):
 
     return render(
         request,
-        # 'index/aidle_signup.html',
         "member/signup.html",
         {
             "form": form,

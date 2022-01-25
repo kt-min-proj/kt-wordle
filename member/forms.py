@@ -18,19 +18,16 @@ class SignUpForm(forms.ModelForm):
             "user_class": "CLASS",
         }
 
-    def clean(self):
-        cleaned_data = super().clean()
-        user_id = cleaned_data.get("user_id", "")
-        user_pw = cleaned_data.get("user_pw", "")
-        user_name = cleaned_data.get("user_name", "")
-        user_class = cleaned_data.get("user_class", "")
+    def clean_user_class(self):
+        user_class = self.data.get("user_class")
+        
+        if type(int(user_class)) == type(1):
+            return user_class
 
-        if 8 > len(user_pw):
-            return self.add_error("user_pw", "비밀번호는 8자 이상이여야 합니다.")
-        else:
-            self.user_id = user_id
-            self.user_pw = user_pw
-            self.user_name = user_name
-            self.user_class = user_class
-
-        return super().clean()
+        try:
+            classes = [user_class[1] for user_class in User.CLASS_CHOICES]
+            user_class = classes.index(self.data.get("user_class"))
+            if user_class:
+                return user_class
+        except:
+            self.add_error("user_class", "올바르게 선택해주세요. 존재하지 않는 반입니다.")
