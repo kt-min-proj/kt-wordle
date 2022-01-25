@@ -1,10 +1,14 @@
 import json
+import os
+import sys
 from datetime import datetime
 
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
-from .models import *
+sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
+
+from master_user.models import WordleAnswers
 
 json_false_data = {"data": None, "answer": "Today's answer"}
 
@@ -13,7 +17,7 @@ json_false_data = {"data": None, "answer": "Today's answer"}
 def calendar_view(request):
     json_data = json.loads(request.body)
     _date = datetime.today().strftime("%Y-%m-%d")
-    values = Calendar.objects.filter(date=json_data["date"])
+    values = WordleAnswers.objects.filter(date=json_data["date"])
     for i in values:
         json_data["answer"] = i.answer
     if json_data["date"] == str(_date):

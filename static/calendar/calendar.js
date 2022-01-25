@@ -76,7 +76,7 @@ $(function () {
     });
     $("input[name=date]").click(function (index) {
       clicked_Days = index.currentTarget.value
-      submitData(`${nowYear}-${twoNumber(nowMonth + 1)}-${twoNumber(clicked_Days)}`).then()
+      submitData(`${nowYear}-${twoNumber(nowMonth + 1)}-${twoNumber(clicked_Days)}`)
     })
 
   }
@@ -91,6 +91,13 @@ $(function () {
 
   buildCalendar();
 });
+
+const rankView = async (data) => {
+  $("#scoreboard").append(
+      `<a>a</a>`
+  )
+
+}
 
 const submitData = async (data) => {
   try {
