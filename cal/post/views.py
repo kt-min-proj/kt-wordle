@@ -27,7 +27,7 @@ def calendar_view(request):
 
     for i in values:
         json_data["answer"] = i.answer
-        json_data['rank'] = calendar_rank(json_data['rank'])
+        json_data["rank"] = calendar_rank(json_data["rank"])
     if json_data["date"] == str(_date):
         return JsonResponse(json_false_data)
 
@@ -39,5 +39,5 @@ def calendar_rank(data: dict):
         d = WordleDayRanks.objects.all()
         data[f"{i}"] = ""
         for ii in d:
-            data[f'{i}'] = ii.user_rank
+            data[f"{i}"] = ii.user_rank
     return data
