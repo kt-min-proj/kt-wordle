@@ -62,8 +62,7 @@
       
       <datalist id="class_options">
           {% for class in classes %}
-              {% comment %} <option value="{{ class }}" label="{{ class }}"></option> {% endcomment %}
-              <option value="{{ forloop.counter0 }}" label="{{ class }}"></option>
+              <option value="{{ class }}" label="{{ class }}"></option>
           {% endfor %}
       </datalist>
       <div>

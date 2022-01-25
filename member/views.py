@@ -7,7 +7,7 @@ from django.http import HttpResponse
 from argon2 import PasswordHasher
 
 # import app
-from .models import User
+from .models import WordleUser
 from .forms import SignUpForm
 
 # Create your views here.
@@ -18,7 +18,7 @@ def index_test(request):
 
 
 def signup_custom(request):
-    classes = [user_class[1] for user_class in User.CLASS_CHOICES]
+    classes = [user_class[1] for user_class in WordleUser.CLASS_CHOICES]
 
     if request.method == "POST":
         form = SignUpForm(request.POST)
@@ -46,18 +46,18 @@ def login_custom(request):
         user_id = request.POST.get("user_id")
         user_pw = request.POST.get("user_pw")
         try:
-            user = User.objects.get(user_id=user_id)
+            user = WordleUser.objects.get(user_id=user_id)
             password = user.user_pw
             if not PasswordHasher().verify(password, user_pw.encode()):
                 return render(
                     request,
-                    "member/login.html",
+                    "index/aidle_main.html",
                     {"login_status": "ID 혹은 PASSWORD를 확인해주세요."},
                 )
-        except User.DoesNotExist as e:
+        except WordleUser.DoesNotExist as e:
             return render(
                 request,
-                "member/login.html",
+                "index/aidle_main.html",
                 {"login_status": "ID 혹은 PASSWORD를 확인해주세요."},
             )
         else:
@@ -65,7 +65,7 @@ def login_custom(request):
             request.session["user_name"] = user.user_name
         return redirect("member:index_test")
     else:
-        return render(request, "member/login.html")
+        return render(request, "index/aidle_main.html")
 
 
 def logout_custom(request):
