@@ -12,6 +12,7 @@ def main(request):
     except:
         data = ""
 
+
     # try:
     #     condata = wordle_ranks.objects.filter(date=datetime.now()).select_related('user').order_by('user_rank')
     # except:
@@ -50,6 +51,7 @@ def input_answer(request):
     return render(request, "master_user/main.html", {"answer": answer})
 
 
+
 # 문제 수정 view
 def edit_answer(request):
     a = request.GET.get("answer")
@@ -67,7 +69,6 @@ def delete_answer(request):
     wordle_answers.objects.get(date=timezone.now()).delete()
 
     return redirect("/master/main")
-
 
 # 더미 데이터 생성
 # 나중에 필히 지울것!!!
