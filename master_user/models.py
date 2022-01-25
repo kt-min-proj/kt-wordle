@@ -6,7 +6,7 @@ class wordle_answers(models.Model):
     answer = models.CharField(max_length=20)
 
     class Meta:
-        db_table ='wordle_answer'
+        db_table = "wordle_answer"
 
 
 class wordle_users(models.Model):
@@ -16,7 +16,7 @@ class wordle_users(models.Model):
     dclass = models.CharField(max_length=50)
 
     class Meta:
-        db_table = 'wordle_user'
+        db_table = "wordle_user"
 
 
 class wordle_dayRanks(models.Model):
@@ -25,7 +25,7 @@ class wordle_dayRanks(models.Model):
     user = models.ForeignKey(wordle_users, on_delete=models.CASCADE)
 
     class Meta:
-        db_table = 'wordle_dayRank'
+        db_table = "wordle_dayRank"
 
 
 class wordle_ranks(models.Model):
@@ -35,4 +35,4 @@ class wordle_ranks(models.Model):
     date = models.DateField()
 
     class Meta:
-        db_table = 'wordle_rank'
+        db_table = "wordle_rank"
