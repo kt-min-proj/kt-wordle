@@ -28,8 +28,12 @@ class WordleUser(models.Model):
         max_length=50, validators=[password_validator], db_column="password"
     )
     user_name = models.CharField(max_length=50, db_column="name")
-    user_class = models.CharField(max_length=10, choices=CLASS_CHOICES, db_column="class")
-    user_role = models.SmallIntegerField(choices=CLASS_CHOICES, default=0, db_column="role")
+    user_class = models.CharField(
+        max_length=10, choices=CLASS_CHOICES, db_column="class"
+    )
+    user_role = models.SmallIntegerField(
+        choices=CLASS_CHOICES, default=0, db_column="role"
+    )
 
     class Meta:
         db_table = "wordle_user"

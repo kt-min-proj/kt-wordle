@@ -1,9 +1,11 @@
 # python
 from datetime import datetime
+
 # django
 from django.shortcuts import render, redirect, HttpResponse
 from django.utils import timezone
 from django.contrib import messages
+
 # in app
 from .models import WordleAnswers, WordleDayRanks, WordleRanks
 from member.models import WordleUser
@@ -15,31 +17,24 @@ def main(request):
         user_id = request.session["user_id"]
         user = WordleUser.objects.get(user_id=user_id)
         if user.role == 0:  # 일반 유저이면 돌아가도록
-            messages.add_message(request, 
-                messages.ERROR, 
-                '권한이 없습니다.'
-            )
+            messages.add_message(request, messages.ERROR, "권한이 없습니다.")
             return redirect("member:index_test")
     except:
         return render(
-            request, 
-            'index/aidle_main.html', 
-            { 'login_status': '로그인 후 입력해주세요.' }
+            request, "index/aidle_main.html", {"login_status": "로그인 후 입력해주세요."}
         )
-            
+
     try:
         a = WordleAnswers.objects.get(date=timezone.now())
         data = a
     except:
         data = ""
-    
+
     return render(request, "master_user/main.html", {"data": data, "condata": ""})
     # try:
     #     condata = wordle_ranks.objects.filter(date=datetime.now()).select_related('user').order_by('user_rank')
     # except:
     #     condata = ''
-
-    
 
 
 # 상위 10명 가져와서 저장하는 view

@@ -9,42 +9,70 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('member', '0004_auto_20220125_1407'),
+        ("member", "0004_auto_20220125_1407"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='WordleAnswers',
+            name="WordleAnswers",
             fields=[
-                ('date', models.DateField(primary_key=True, serialize=False)),
-                ('answer', models.CharField(max_length=20)),
+                ("date", models.DateField(primary_key=True, serialize=False)),
+                ("answer", models.CharField(max_length=20)),
             ],
             options={
-                'db_table': 'wordle_answer',
+                "db_table": "wordle_answer",
             },
         ),
         migrations.CreateModel(
-            name='WordleRanks',
+            name="WordleRanks",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('user_rank', models.IntegerField()),
-                ('date', models.DateField()),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='member.wordleuser')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("user_rank", models.IntegerField()),
+                ("date", models.DateField()),
+                (
+                    "user",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="member.wordleuser",
+                    ),
+                ),
             ],
             options={
-                'db_table': 'wordle_rank',
+                "db_table": "wordle_rank",
             },
         ),
         migrations.CreateModel(
-            name='WordleDayRanks',
+            name="WordleDayRanks",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('count', models.IntegerField()),
-                ('create_at', models.DateTimeField()),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='member.wordleuser')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("count", models.IntegerField()),
+                ("create_at", models.DateTimeField()),
+                (
+                    "user",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="member.wordleuser",
+                    ),
+                ),
             ],
             options={
-                'db_table': 'wordle_dayRank',
+                "db_table": "wordle_dayRank",
             },
         ),
     ]
