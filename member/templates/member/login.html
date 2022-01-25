@@ -1,0 +1,53 @@
+{% extends 'index/aidle_main.html' %}
+
+
+{% block login %}
+
+<style>
+    #login_error {
+        position: absolute; 
+        top: 375px; 
+        left: 640px; 
+        color: rgba(130,128,200,50);
+    }
+</style>
+
+{% if not request.session.user_id %}
+<div class="aidl_login" style="display : flex">
+    <div class="aidl_login_inner">
+        <form method="post" action="{% url 'member:login' %}">
+            {% csrf_token %}
+            <div class = "IDinput">
+                <div style = "color:rgba(130,128,128,1); font-size: 20px;" >
+                    <b>ID</b>
+                </div>
+                <input type="text" name="user_id">
+            </div>
+            <div class = "PWinput">
+                <div style = "color:rgba(130,128,128,1); font-size: 20px;" >
+                    <b>PASSWORD</b>
+                </div>
+                <input type="password" name = "user_pw" >
+            </div>
+            <div>
+                <input class="butt" type = "submit" id ="close" value = "LOGIN">
+            </div>
+            <div id="login_error">
+                <p> {{ login_status }} </p>
+            </div>
+        </form>
+    </div>
+    <div style = "position : absolute; top : 530px; left : 930px">
+        <a href = "{% url 'member:signup' %}">SIGNUP</a>
+    </div>
+</div>
+
+<script>
+    const close = document.getElementById("close");
+    const modal = document.querySelector(".aidl_login");
+    close.onclick = () => {
+    modal.style.display = "none";};
+</script>
+{% endif %}
+
+{% endblock %}

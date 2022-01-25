@@ -7,23 +7,12 @@
 
 <body style="background-color: rgba(223,223,223,1);">
     <img src="{% static 'index/title.PNG' %}" style="margin-left:600px; margin-top : 50px">
-    <div class="aidl_login" style="display : flex">
-        <div class="aidl_login_inner">
-            <div class = "IDinput">
-                <div style = "color:rgba(130,128,128,1); font-size: 20px;" ><b>ID</b></div>
-                <input type="text" value="" name="Id"></div>
-            <div class = "PWinput">
-                <div style = "color:rgba(130,128,128,1); font-size: 20px;" ><b>PASSWORD</b></div>
-                <input type="password"></div>
-            <button id = "close">
-                <div class="aidl_text"
-                    style="font-size : 30px; color : white; padding-block: 5px; padding-inline: 30px;">LOGIN</div>
-            </button>
-            <div style = "position : absolute; top : 530px; left : 930px">
-                <a href = "aidle_signup.html">SIGNUP</a>
-            </div>
-        </div>
-    </div>
+    {% block login %} {% endblock %}
+    {% if request.session.user_id %}
+    <a href="{% url 'member:logout' %}">
+        {{ request.session.user_name }} 님 반갑습니다. (로그아웃)
+    </a>
+    {% endif %}
     <div class="sideicon">
         <input type="checkbox" id="menuicon">
         <label for="menuicon">
@@ -171,11 +160,3 @@
 </body>
 
 
-
-
-<script>
-    const close = document.getElementById("close");
-    const modal = document.querySelector(".aidl_login");
-    close.onclick = () => {
-    modal.style.display = "none";};
-</script>
