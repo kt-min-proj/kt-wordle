@@ -35,6 +35,7 @@ function game() {
                 document.getElementById(c).setAttribute('readonly', 'true')
             }
             else {
+                document.getElementById(c).className = 'textboxDef'
                 document.getElementById(c).setAttribute('readonly', 'true')
             }
         }

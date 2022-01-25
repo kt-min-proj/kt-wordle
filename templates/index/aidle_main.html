@@ -42,6 +42,14 @@
   </div>
 </div>
 <div class = "wordle_container">
+  <form>
+    <button type="button" onclick="game()">확인</button><br/>
+    <p id="box" /p>
+  </form>
+</div>
+{% load static %}
+<script src="{% static 'game/game.js' %}"></script>
+<link rel="stylesheet" href="{% static 'game/game.css' %}" />
 </div>
 <div class="sideicon">
   <input type="checkbox" id="menuicon">

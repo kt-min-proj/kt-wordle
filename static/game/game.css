@@ -1,15 +1,44 @@
-.textbox, .textboxerr, .textboxcorr{
-    border-style: solid;
-    border-radius : 5px;
-    width: 50px;
-    height: 50px;
+.textbox, .textboxerr, .textboxcorr, .textboxDef{
+    border-radius : 18px;
+    border : 8px solid rgba(223,223,223,1);
+    width: 90px;
+    height: 90px;
     resize: none;
+    background-color:rgba(197, 197, 197, 1)
+    
 }
 
 .textboxErr{
-    border-color:red;
+    background-color : rgba(228, 145, 145, 1);
+    animation-name : wrong;
+    animation-duration: 0.5s;
+    animation-iteration-count: 3;
 }
 
 .textboxCorr{
-    border-color:dodgerBlue;
+    background-color: rgba(65, 180, 176, 1);
+    animation-name : correct;
+    animation-duration: 0.5s;
+    animation-iteration-count: 3;
+}
+.textboxDef {
+    background-color : rgba(130, 128, 128, 1);
+    animation-name : Def;
+    animation-duration: 1.5s;
+}
+
+@keyframes wrong {
+    0% {background-color : rgba(197, 197, 197, 1);}
+    50% {background-color : rgba(228, 145, 145, 1);}
+    100% {background-color : rgba(197, 197, 197, 1); }
+}
+
+@keyframes correct {
+    0% {background-color :rgba(197, 197, 197, 1);}
+    50% {background-color : rgba(65, 180, 176, 1)}
+    100% {background-color : rgba(197, 197, 197, 1); }
+}
+@keyframes Def {
+    0% {background-color : rgba(197, 197, 197, 1);}
+    100% {background-color : rgba(130, 128, 128, 1);}
 }
