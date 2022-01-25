@@ -5,7 +5,7 @@ from member.models import WordleUser
 
 # Create your models here.
 class WordleAnswers(models.Model):
-    objects = None # NOTE IDE error
+    objects = None  # NOTE IDE error
     date = models.DateField(primary_key=True)
     answer = models.CharField(max_length=20)
 
