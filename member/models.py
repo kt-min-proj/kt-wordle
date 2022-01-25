@@ -20,7 +20,9 @@ class User(models.Model):
         (9, "부산/경남권1반"),
     )
     user_id = models.CharField(max_length=50, unique=True)
-    user_pw = models.CharField(max_length=50, validators=[password_validator], db_column="password")
+    user_pw = models.CharField(
+        max_length=50, validators=[password_validator], db_column="password"
+    )
     user_name = models.CharField(max_length=50, db_column="name")
     user_class = models.SmallIntegerField(choices=CLASS_CHOICES, db_column="class")
 
