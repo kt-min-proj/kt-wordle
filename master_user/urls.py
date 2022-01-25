@@ -5,5 +5,6 @@ urlpatterns = [
     path('get_top/', views.get_top),
     path('input_answer/', views.input_answer),
     path('edit-answer/', views.edit_answer),
+    path('delete_answer/', views.delete_answer),
     path('dummy_dayData/', views.dummy)
 ]

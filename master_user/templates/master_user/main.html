@@ -10,7 +10,7 @@
 <body>
     <!-- 상단 문제 등록 부분 -->
     <section class="container">
-        {% if data == '' %}
+        {% if data %}
             <h1 class="today_keyword">오늘의 키워드를 등록해 주세요</h1>
             <form class="register_answer" method="get" action="/master/input_answer/">
                 <input class="answer" type="text" name="answer">
@@ -35,13 +35,11 @@
         <h2 class="today_winner">아래의 버튼을 눌러 오늘의 승자를 결정해 주세요</h2>
         {% if condata %}
             <div class="winner_list">
-                {% if condata %}
-                    <h3>오늘의 top10은!!</h3>
-                    {% for i in condata %}
-                        <div>{{ i.user_rank }}등 <strong>{{ i.user.name }}</strong></div>
-                    {% endfor %}
-                    <h3>축하합니다!</h3>
-                {% endif %}
+                <h3>오늘의 top10은!!</h3>
+                {% for i in condata %}
+                    <div>{{ i.user_rank }}등 <strong>{{ i.user.name }}</strong></div>
+                {% endfor %}
+                <h3>축하합니다!</h3>
             </div>
         {% else %}
             <form class="winner_form" method="get" action="/master/get_top">
