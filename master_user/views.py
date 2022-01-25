@@ -12,16 +12,12 @@ def main(request):
     except:
         data = ""
 
-    condata = (
-        wordle_ranks.objects.filter(date=datetime.now())
-        .select_related("user")
-        .order_by("user_rank")
-    )
-    return render(request, "master_user/main.html", {"data": data, "condata": condata})
+    # try:
+    #     condata = wordle_ranks.objects.filter(date=datetime.now()).select_related('user').order_by('user_rank')
+    # except:
+    #     condata = ''
 
-
-def edit_answer(request):
-    return render(request, "master_user/edit.html")
+    return render(request, "master_user/main.html", {"data": data, "condata": ""})
 
 
 # 상위 10명 가져와서 저장하는 view
@@ -52,6 +48,25 @@ def input_answer(request):
         answer = "등록에 실패했습니다."
 
     return render(request, "master_user/main.html", {"answer": answer})
+
+
+# 문제 수정 view
+def edit_answer(request):
+    a = request.GET.get("answer")
+    if a:
+        w = wordle_answers.objects.get(date=timezone.now())
+        w.answer = a
+        w.save()
+        return redirect("/master/main")
+
+    return render(request, "master_user/edit.html")
+
+
+# 문제 삭제 view
+def delete_answer(request):
+    wordle_answers.objects.get(date=timezone.now()).delete()
+
+    return redirect("/master/main")
 
 
 # 더미 데이터 생성
