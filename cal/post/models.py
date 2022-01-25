@@ -1,7 +1,10 @@
 from django.db import models
 
-# Create your models here.
-
 
 class Calendar(models.Model):
-    date = models.CharField(max_length=12)
+    objects = None
+    date = models.DateField(primary_key='date')
+    answer = models.CharField(max_length=20)
+
+    class Meta:
+        db_table = "wordle_answer"
