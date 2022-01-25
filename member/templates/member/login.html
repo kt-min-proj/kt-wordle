@@ -13,7 +13,7 @@
 </style>
 
 {% if not request.session.user_id %}
-<div class="aidl_login" style="display : flex">
+<div class="aidl_login" style="display: flex">
     <div class="aidl_login_inner">
         <form method="post" action="{% url 'member:login' %}">
             {% csrf_token %}
