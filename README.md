@@ -12,7 +12,7 @@ Wordle 퀴즈
 - [ ] Signup
 - [ ] Logout
 - [ ] Logout
-- [ ] Wordle
+- [ ] Wordle - 정답이랑 입력값 비교 가능
 - [ ] Calendar `date search data`
 - [ ] Put data, Table reset under 10
 
