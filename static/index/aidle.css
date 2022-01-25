@@ -200,6 +200,7 @@ input {
   height : 100%;
 }
 
+
 @keyframes scaleUp {
   from {
     transform: scale(0.1);
