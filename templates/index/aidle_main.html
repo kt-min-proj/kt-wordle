@@ -1,84 +1,68 @@
 <head>
-  <title> AIDLE </title>
-  {% load static %}
-  <link href={% static 'index/aidle.css' %}
-        rel="stylesheet"
-        type="text/css"/>
-  <link href={% static 'calendar/calendar.css' %}
-        rel="stylesheet"
-        type="text/css"/>
-  <meta name='description' content="aidle">
+    <title> AIDLE </title>
+    {% load static %}
+    <link href={% static 'index/aidle.css' %} rel="stylesheet" type="text/css" />
+    <link href={% static 'calendar/calendar.css' %} rel="stylesheet" type="text/css" />
+    <meta name='description' content="aidle">
 </head>
 
 <body style="background-color: rgba(223,223,223,1);">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-<script src={% static "calendar/calendar.js" %}></script>
-<script src={% static "index/aidle.js" %}></script>
-<img src="{% static 'index/title.PNG' %}"
-     style="margin-left:600px; margin-top : 50px">
-<div class="aidl_login" style="display: flex">
-  <div class="aidl_login_inner">
-    <div class="IDinput">
-      <div style="color:rgba(130,128,128,1); font-size: 20px;"><b>ID</b>
-      </div>
-      <input type="text" name="user_id"></div>
-    <div class="PWinput">
-      <div style="color:rgba(130,128,128,1); font-size: 20px;">
-        <b>PASSWORD</b></div>
-      <input type="password" name="password"></div>
-    <div>
-      <input class="butt" type="submit" id="close" value="LOGIN" style ="color:white">
-    </div>
-  </div>
-  <div style="position : relative; top : 170px; left : -100px">
-    <a href="aidle_signup.html">SIGNUP</a>
-  </div>
-</div>
-<div class="rankar">
-  <div class="aidl_text"
-       style="color:rgba(130,128,128,1); margin-top:20%; font-size: 45px;">
-    RANK
-  </div>
-</div>
-<div class = "wordle_container">
-</div>
-<div class="sideicon">
-  <input type="checkbox" id="menuicon">
-  <label for="menuicon">
-    <span></span>
-    <span></span>
-    <span></span>
-  </label>
-  <div class="sidebar">
-    <table id='calendar'>
-      <thead>
-      <tr>
-        <th><input name="preMon"
-                   class="preMon"
-                   type="button"
-                   value="<"/></th>
-        <th colspan="5" class="year_month"></th>
-        <th><input name="nextMon"
-                   class="nextMon"
-                   type="button"
-                   value=">"/></th>
-      </tr>
-      <tr>
-        <th>일</th>
-        <th>월</th>
-        <th>화</th>
-        <th>수</th>
-        <th>목</th>
-        <th>금</th>
-        <th>토</th>
-      </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
-    <a id="date_name"></a>
-  </div>
-</div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src={% static "calendar/calendar.js" %}></script>
+    <script src={% static "index/aidle.js" %}></script>
 
-</div>
+    
+    {% if messages %}
+    <div class="text-center"> 
+        <div class="btn btn-{{ message.tags }} rounded-pill px-5 my-3"> 
+            {{ message }} 
+        </div> 
+    </div>
+    {% endif %}
+     {% include "member/login.html" %}
+
+    <img src="{% static 'index/title.PNG' %}" style="margin-left:600px; margin-top : 50px">
+     
+
+
+    <div class="rankar">
+        <div class="aidl_text" style="color:rgba(130,128,128,1); margin-top:20%; font-size: 45px;">
+            RANK
+        </div>
+    </div>
+    <div class="wordle_container">
+    </div>
+    <div class="sideicon">
+        <input type="checkbox" id="menuicon">
+        <label for="menuicon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+        <div class="sidebar">
+            <table id='calendar'>
+                <thead>
+                    <tr>
+                        <th><input name="preMon" class="preMon" type="button" value="<" /></th>
+                        <th colspan="5" class="year_month"></th>
+                        <th><input name="nextMon" class="nextMon" type="button" value=">" /></th>
+                    </tr>
+                    <tr>
+                        <th>일</th>
+                        <th>월</th>
+                        <th>화</th>
+                        <th>수</th>
+                        <th>목</th>
+                        <th>금</th>
+                        <th>토</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+            <a id="date_name"></a>
+        </div>
+    </div>
+
+    </div>
 </body>
