@@ -95,9 +95,10 @@ $(function () {
 const submitData = async (data) => {
   axios.post("/calendar/post/", {
     date: data,
+    answer: "",
   }).then((res) => {
     console.log(res.data);
-    document.getElementById("date_name").text = res.data.date;
+    document.getElementById("date_name").text = res.data.answer;
   }, (error) => {
     console.log(error)
   })
