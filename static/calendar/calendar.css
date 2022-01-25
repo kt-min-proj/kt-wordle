@@ -1,28 +1,27 @@
+:root {
+  --calendar-color: gray;
+}
 table {
   clear: both;
 }
 th {
-  height: 50px;
-  width: 70px;
-  background-color: gray;
+  height: 10px;
+  width: 50px;
+  background-color: var(--calendar-color);
   border-radius: 5%;
 }
 .colToday {
-  background-color: #ffa07a !important;
+  background-color: #c24919 !important;
 }
-.date {
+input.date {
   text-align: center;
-  height: 50px;
-  width: 70px;
+  height: 100%;
+  width: 100%;
+  border: none;
   background-color: #fffdc5;
 }
-input {
-  height: 50px;
-  width: 70px;
+.preMon,
+.nextMon {
+  background-color: var(--calendar-color);
   border: none;
-  background-color: orange;
-  font-size: 30px;
-}
-.year_mon {
-  font-size: 25px;
 }
