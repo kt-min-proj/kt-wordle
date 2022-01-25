@@ -163,22 +163,22 @@ input[id="menuicon"]:checked + label + div {
   border: 7px solid rgba(130, 128, 128, 1);
 }
 
-button {
-  position: fixed;
-  margin-top: 150px;
-  margin-left: 165px;
-  border-radius: 10px;
-  cursor: pointer;
-  background-color: rgba(65, 180, 176, 1);
-  border: 5px solid rgba(130, 128, 128, 1);
+.butt{
+  position:relative; 
+  top : 150px; 
+  left : 180px; 
+  background-color:rgba(65,180,176,1) ; 
+  height : 60px; width : 150px;border : 5px solid rgba(130,128,128,1); 
+  border-radius:15px;
+  cursor : pointer;
 }
-button:hover {
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+.butt:hover {
+  box-shadow: 0 5px 10px rgba(0,0,0,0.3);
 }
-button:active {
+.butt:active {
   background-color: rgba(40, 116, 113, 1);
-  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
-  border: 7px solid rgba(130, 128, 128, 1);
+  box-shadow:0 0 0 rgba(0,0,0,0);
+  border : 7px solid rgba(130,128,128,1);
 }
 
 .IDinput {
