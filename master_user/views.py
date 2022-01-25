@@ -46,7 +46,7 @@ def get_top(request):
 
     # 10개밖에 안되니까 반복문 돌려서 필요한 정보 wordl_ranks에 입력
     for n, i in enumerate(a):
-        WordleRanks(user_rank=n + 1, date=i.create_at, user_id=i.user_id).save()
+        WordleRanks(user_rank=n + 1, date=i.recorded_at, user_id=i.user_id).save()
 
     # dayRanks 의 전체 데이터 삭제
     WordleDayRanks.objects.all().delete()
