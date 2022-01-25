@@ -80,9 +80,9 @@ WSGI_APPLICATION = "config.wsgi.application"
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
     },
     # "default": {
     #     "ENGINE": "django.db.backends.mysql",
@@ -140,5 +140,5 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # login
-LOGIN_REDIRECT_URL = '/member/login/'
-LOGOUT_REDIRECT_URL = '/member/login/'
+LOGIN_REDIRECT_URL = "/member/login/"
+LOGOUT_REDIRECT_URL = "/member/login/"

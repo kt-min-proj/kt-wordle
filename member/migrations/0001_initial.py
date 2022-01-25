@@ -8,18 +8,34 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Member',
+            name="Member",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('user_id', models.CharField(max_length=50, unique=True)),
-                ('user_pw', models.CharField(db_column='password', max_length=50)),
-                ('user_name', models.CharField(db_column='name', max_length=50)),
-                ('user_class', models.IntegerField(db_column='class', validators=[django.core.validators.MinValueValidator(1), django.core.validators.MaxValueValidator(10)])),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("user_id", models.CharField(max_length=50, unique=True)),
+                ("user_pw", models.CharField(db_column="password", max_length=50)),
+                ("user_name", models.CharField(db_column="name", max_length=50)),
+                (
+                    "user_class",
+                    models.IntegerField(
+                        db_column="class",
+                        validators=[
+                            django.core.validators.MinValueValidator(1),
+                            django.core.validators.MaxValueValidator(10),
+                        ],
+                    ),
+                ),
             ],
         ),
     ]

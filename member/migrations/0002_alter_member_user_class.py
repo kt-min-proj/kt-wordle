@@ -6,13 +6,27 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('member', '0001_initial'),
+        ("member", "0001_initial"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='member',
-            name='user_class',
-            field=models.SmallIntegerField(choices=[(0, '수도권1반'), (1, '수도권2반'), (2, '수도권3반'), (3, '수도권3반'), (4, '수도권3반'), (5, '강원권1반'), (6, '충남/충북권1반'), (7, '대구/경북권1반'), (8, '전남/전북권1반'), (9, '부산/경남권1반')], db_column='class'),
+            model_name="member",
+            name="user_class",
+            field=models.SmallIntegerField(
+                choices=[
+                    (0, "수도권1반"),
+                    (1, "수도권2반"),
+                    (2, "수도권3반"),
+                    (3, "수도권3반"),
+                    (4, "수도권3반"),
+                    (5, "강원권1반"),
+                    (6, "충남/충북권1반"),
+                    (7, "대구/경북권1반"),
+                    (8, "전남/전북권1반"),
+                    (9, "부산/경남권1반"),
+                ],
+                db_column="class",
+            ),
         ),
     ]

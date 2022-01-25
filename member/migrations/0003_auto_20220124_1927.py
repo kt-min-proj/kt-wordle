@@ -6,16 +6,16 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('member', '0002_alter_member_user_class'),
+        ("member", "0002_alter_member_user_class"),
     ]
 
     operations = [
         migrations.RenameModel(
-            old_name='Member',
-            new_name='User',
+            old_name="Member",
+            new_name="User",
         ),
         migrations.AlterModelTable(
-            name='user',
-            table='user',
+            name="user",
+            table="user",
         ),
     ]
