@@ -1,5 +1,5 @@
 var user = "KT"
-var answer = "4567";
+var answer = ("qwer").toLowerCase();
 var answer_list = new Array();
 var answer_list = Array.from(answer);
 var my_oppertunity = 0;
@@ -32,7 +32,7 @@ function game() {
         jvalue = (my_oppertunity) * 100
         for (i = 0; i < answer_list.length; i++) {
             ivalue = String(jvalue + i)
-            user_input_list.push(document.getElementById(ivalue).value)
+            user_input_list.push((document.getElementById(ivalue).value).toLowerCase())
         }
         for (i = 0; i < answer_list.length; i++) {
             c = String(jvalue + i)
@@ -42,12 +42,13 @@ function game() {
                     document.getElementById(c).setAttribute('readonly', 'true')
                 }
                 else {
+                    document.getElementById(c).className = 'textboxDef'
                     document.getElementById(c).setAttribute('readonly', 'true')
                 }
             }
             else {
 
-                document.getElementById(c).className = 'textboxDef'
+                document.getElementById(c).className = 'textboxCorr'
                 document.getElementById(c).setAttribute('readonly', 'true')
             }
         }
