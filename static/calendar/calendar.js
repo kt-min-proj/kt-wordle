@@ -77,7 +77,7 @@ $(function () {
     $("input[name=date]").click(function (index) {
       clicked_Days = index.currentTarget.value
       submitData(`${nowYear}-${twoNumber(nowMonth + 1)}-${twoNumber(clicked_Days)}`).then(res => {
-        console.log(res)
+        rankView(res)
       })
     })
 
@@ -95,10 +95,16 @@ $(function () {
 });
 
 const rankView = async (data) => {
-  $("#scoreboard").append(
-      `<a>a</a>`
-  )
+  $("#scoreboard > br").remove()
+  $("#scoreboard > a").remove()
 
+  let o
+  for (let i = 0; i <= 9; i++) {
+    o = data.rank[i]
+    $("#scoreboard").append(
+        `<a>${i + 1} - ${o}</a><br>`
+    )
+  }
 }
 
 const submitData = async (data) => {
