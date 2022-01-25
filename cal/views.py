@@ -10,3 +10,11 @@ def index(request):
         template_name="calendar/calendar.html",
         context={"data": a},
     )
+
+
+def cal(request):
+    return render(
+        request=request,
+        template_name="index/aidle_main.html",
+        context={},
+    )
