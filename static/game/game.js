@@ -1,5 +1,5 @@
 var user = "KT"
-var answer = ("QWTTI").toLowerCase();
+var answer = ("aidle").toLowerCase();
 var answer_list = new Array();
 var answer_list = Array.from(answer);
 var my_oppertunity = 0;

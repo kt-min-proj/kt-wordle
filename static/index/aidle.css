@@ -143,6 +143,8 @@ input[id="menuicon"]:checked + label + div {
   height : 60px; width : 150px;border : 5px solid rgba(130,128,128,1); 
   border-radius:15px;
   cursor : pointer;
+  color : white;
+  text-align: center;
 }
 .butt:hover {
   box-shadow: 0 5px 10px rgba(0,0,0,0.3);
@@ -199,8 +201,23 @@ input {
   width: 1505px;
   height : 100%;
 }
-
-
+.qmark {
+  position : absolute;
+  top : 40px;
+  left: 1000px;
+  font-size : 20px;
+  cursor : pointer;
+}
+.example {
+  display : none;
+  border : 5px dotted rgba(130, 128, 128, 1);
+  border-radius : 20px;
+  position : absolute;
+  top : 50px;
+  left : 1020px;
+  width : 350px;
+  height:350px;
+}
 @keyframes scaleUp {
   from {
     transform: scale(0.1);
