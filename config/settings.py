@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
+from django.contrib.messages import constants as messages
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -31,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    "member",
     "cal",
     "cal.post",
     "game",
@@ -42,6 +44,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     # "rest_framework",
+    "argon2",
 ]
 
 MIDDLEWARE = [
@@ -80,13 +83,17 @@ WSGI_APPLICATION = "config.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.mysql",
-        "NAME": "wordle",
-        "USER": "WORDLE",
-        "PASSWORD": "123412",
-        "HOST": "146.56.160.85",
-        "PORT": "3306",
-    }
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
+    },
+    # "default": {
+    #     "ENGINE": "django.db.backends.mysql",
+    #     "NAME": "wordle",
+    #     "USER": "WORDLE",
+    #     "PASSWORD": "123412",
+    #     "HOST": "146.56.160.85",
+    #     "PORT": "3306",
+    # }
 }
 
 
@@ -133,3 +140,12 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# login
+LOGIN_REDIRECT_URL = "/member/login/"
+LOGOUT_REDIRECT_URL = "/member/login/"
+
+# messages
+MESSAGE_TAGS = {
+    messages.ERROR: "danger",
+}

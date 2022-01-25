@@ -1,6 +1,7 @@
 from django.urls import path
 from . import views
 
+app_name = "master"
 urlpatterns = [
     path("main/", views.main),
     path("get_top/", views.get_top),
