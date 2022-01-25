@@ -46,7 +46,8 @@ function game() {
                 }
             }
             else {
-                document.getElementById(c).className = 'textboxCorr'
+
+                document.getElementById(c).className = 'textboxDef'
                 document.getElementById(c).setAttribute('readonly', 'true')
             }
         }

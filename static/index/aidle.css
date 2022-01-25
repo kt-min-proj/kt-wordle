@@ -174,15 +174,11 @@ input {
 }
 .wordle_container{
   position: relative;
-  margin-top: 20px;
   display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: space-around;
-  background-color: white;
-  width: 820px;
-  height : 550px;
-  left: 340px;
+  justify-content: center;
+  background-color: rgba(0,0,0,0);
+  width: 1505px;
+  height : 100%;
 }
 
 @keyframes scaleUp {
