@@ -4,8 +4,11 @@
     width: 90px;
     height: 90px;
     resize: none;
-    background-color:rgba(197, 197, 197, 1)
-    
+    background-color:rgba(197, 197, 197, 1);
+    text-align : center;
+    font-family : "Gill Sans MT";
+    color : white;
+    font-size : 40px;
 }
 
 .textboxErr{
@@ -35,7 +38,7 @@
 
 @keyframes correct {
     0% {background-color :rgba(197, 197, 197, 1);}
-    50% {background-color : rgba(65, 180, 176, 1)}
+    50% {background-color : rgba(65, 180, 176, 1);}
     100% {background-color : rgba(197, 197, 197, 1); }
 }
 @keyframes Def {
