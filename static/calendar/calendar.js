@@ -1,6 +1,6 @@
 $(function () {
-  let today = new Date();
-  const date = new Date();
+  var today = new Date();
+  var date = new Date();
 
   $("input[name=preMon]").click(function () {
     // 이전달
@@ -27,11 +27,11 @@ $(function () {
   });
 
   function buildCalendar() {
-    let nowYear = today.getFullYear();
-    let nowMonth = today.getMonth();
-    let firstDate = new Date(nowYear, nowMonth, 1).getDate();
-    let firstDay = new Date(nowYear, nowMonth, 1).getDay(); //1st의 요일
-    let lastDate = new Date(nowYear, nowMonth + 1, 0).getDate();
+    nowYear = today.getFullYear();
+    nowMonth = today.getMonth();
+    firstDate = new Date(nowYear, nowMonth, 1).getDate();
+    firstDay = new Date(nowYear, nowMonth, 1).getDay(); //1st의 요일
+    lastDate = new Date(nowYear, nowMonth + 1, 0).getDate();
 
     if (
         (nowYear % 4 === 0 && nowYear % 100 !== 0) ||
@@ -43,16 +43,14 @@ $(function () {
 
     $(".year_month").text(nowYear + " - " + (nowMonth + 1));
 
-    for (let i = 0; i < firstDay; i++) {
+    for (i = 0; i < firstDay; i++) {
       //첫번째 줄 빈칸
       $("#calendar tbody:last").append("<td></td>");
     }
-
-    let plusDate;
     for (i = 1; i <= lastDate; i++) {
       // 날짜 채우기
       plusDate = new Date(nowYear, nowMonth, i).getDay();
-      if (plusDate === 0) {
+      if (plusDate == 0) {
         $("#calendar tbody:last").append("<tr></tr>");
       }
 
@@ -60,7 +58,7 @@ $(function () {
           `<td><input class='date' name='date' type='button' value=${i} /></td>`
       );
     }
-    if ($("#calendar > tbody > td").length % 7 !== 0) {
+    if ($("#calendar > tbody > td").length % 7 != 0) {
       //마지막 줄 빈칸
       for (i = 1; i <= $("#calendar > tbody > td").length % 7; i++) {
         $("#calendar tbody:last").append("<td></td>");
@@ -69,17 +67,18 @@ $(function () {
     $("td > input.date").each(function (index) {
       // 오늘 날짜 표시
       if (
-          nowYear === date.getFullYear() &&
-          nowMonth === date.getMonth() &&
-          $("td > input.date").eq(index).val() === date.getDate()
+          nowYear == date.getFullYear() &&
+          nowMonth == date.getMonth() &&
+          $("td > input.date").eq(index).val() == date.getDate()
       ) {
         $("td > input.date").eq(index).addClass("colToday");
       }
     });
     $("input[name=date]").click(function (index) {
-      let clicked_Days = index.currentTarget.value
+      clicked_Days = index.currentTarget.value
       submitData(`${nowYear}-${twoNumber(nowMonth + 1)}-${twoNumber(clicked_Days)}`).then()
     })
+
   }
 
   function twoNumber(num) {
@@ -96,10 +95,9 @@ $(function () {
 const submitData = async (data) => {
   axios.post("/calendar/post/", {
     date: data,
-    answer: "",
   }).then((res) => {
     console.log(res.data);
-    document.getElementById("date_name").text = res.data.answer;
+    document.getElementById("date_name").text = res.data.date;
   }, (error) => {
     console.log(error)
   })
