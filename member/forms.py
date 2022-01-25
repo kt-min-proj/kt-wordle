@@ -20,7 +20,7 @@ class SignUpForm(forms.ModelForm):
 
     def clean_user_class(self):
         user_class = self.data.get("user_class")
-        
+
         if type(int(user_class)) == type(1):
             return user_class
 
