@@ -5,12 +5,11 @@
     <meta charset="UTF-8">
     <title>강사 화면</title>
     <link rel="stylesheet" href="{% static 'master_user/css/style.css'%}">
-    <script defer src="{% static 'javascript/main.js'%}"></script>
 </head>
-<body style = "background-color: rgba(223,223,223,1);">
+<body>
     <!-- 상단 문제 등록 부분 -->
     <section class="container">
-        {% if data %}
+        {% if data == '' %}
             <h1 class="today_keyword">오늘의 키워드를 등록해 주세요</h1>
             <form class="register_answer" method="get" action="/master/input_answer/">
                 <input class="answer" type="text" name="answer">
@@ -19,33 +18,24 @@
         {% else %}
             <h1 class="today_keyword">오늘의 정답은!</h1>
             <h3 class="today_answer">{{ data.answer }}</h3>
-
-            <section class="edit-delete">
-                <a class="edit_link" href="/master/edit-answer/">수정하러가기</a>
-                <form class="delete_answer" method="get" action="/master/delete_answer">
-                    <button>삭제하기</button>
-                </form>
-            </section>
-
+            <a href="/master/edit-answer/">수정하러가기</a>
         {% endif %}
     </section>
 
     <!-- 하단 불러오기 버튼 및 탑10 리스트 출력 부분 -->
     <section class="get_section">
         <h2 class="today_winner">아래의 버튼을 눌러 오늘의 승자를 결정해 주세요</h2>
-        {% if condata %}
-            <div class="winner_list">
-                <h3>오늘의 top10은!!</h3>
+        <form class="winner_form" method="get" action="/master/get_top">
+            <input type="submit" value="불러오기">
+        </form>
+        <div class="winner_list">
+            {% if condata %}
                 {% for i in condata %}
                     <div>{{ i.user_rank }}등 <strong>{{ i.user.name }}</strong></div>
                 {% endfor %}
                 <h3>축하합니다!</h3>
-            </div>
-        {% else %}
-            <form class="winner_form" method="get" action="/master/get_top">
-                <input type="submit" value="불러오기">
-            </form>
-        {% endif %}
+            {% endif %}
+        </div>
     </section>
 
 </body>
