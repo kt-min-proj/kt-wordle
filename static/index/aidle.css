@@ -51,11 +51,11 @@
     color:white;
     padding-top : 7px;
 }
-.sideicon {
+.sideicon{
     width : 40px;
     position : fixed;
-    top : 40px;
-    left:  1450px;
+    top : 5%;
+    left:  95%;
 }
 
 input[id = "menuicon"] {
