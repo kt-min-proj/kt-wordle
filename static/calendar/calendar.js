@@ -76,7 +76,9 @@ $(function () {
     });
     $("input[name=date]").click(function (index) {
       clicked_Days = index.currentTarget.value
-      submitData(`${nowYear}-${twoNumber(nowMonth + 1)}-${twoNumber(clicked_Days)}`)
+      submitData(`${nowYear}-${twoNumber(nowMonth + 1)}-${twoNumber(clicked_Days)}`).then(res => {
+        console.log(res)
+      })
     })
 
   }
@@ -100,17 +102,13 @@ const rankView = async (data) => {
 }
 
 const submitData = async (data) => {
-  try {
-    let res = await axios.post("/calendar/post/", {
-      date: data,
-      answer: "",
-      rank: {
-        0: [], 1: [], 2: [], 3: [], 4: [], 5: [], 6: [], 7: [], 8: [], 9: []
-      }
-    })
-    document.getElementById("date_name").text = res.data.answer;
-  } catch (e) {
-    console.error(e)
-  }
+  let res = await axios.post("/calendar/post/", {
+    date: data,
+    answer: "",
+    rank: {
+      0: [], 1: [], 2: [], 3: [], 4: [], 5: [], 6: [], 7: [], 8: [], 9: []
+    }
+  })
+  document.getElementById("date_name").text = res.data.answer;
   return res.data;
 }
