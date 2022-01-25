@@ -11,7 +11,10 @@ from master_user.models import WordleAnswers
 
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 
-json_false_data = {"data": None, "answer": "Today's answer", }
+json_false_data = {
+    "data": None,
+    "answer": "Today's answer",
+}
 
 
 @csrf_exempt
