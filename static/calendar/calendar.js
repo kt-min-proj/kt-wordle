@@ -93,13 +93,17 @@ $(function () {
 });
 
 const submitData = async (data) => {
-  axios.post("/calendar/post/", {
-    date: data,
-    answer: "",
-  }).then((res) => {
-    console.log(res.data);
+  try {
+    let res = await axios.post("/calendar/post/", {
+      date: data,
+      answer: "",
+      rank: {
+        0: [], 1: [], 2: [], 3: [], 4: [], 5: [], 6: [], 7: [], 8: [], 9: []
+      }
+    })
     document.getElementById("date_name").text = res.data.answer;
-  }, (error) => {
-    console.log(error)
-  })
+  } catch (e) {
+    console.error(e)
+  }
+  return res.data;
 }
