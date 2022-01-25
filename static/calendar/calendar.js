@@ -76,7 +76,7 @@ $(function () {
     });
     $("input[name=date]").click(function (index) {
       clicked_Days = index.currentTarget.value
-      submitData(`${nowYear}-${twoNumber(nowMonth + 1)}-${twoNumber(clicked_Days)}`).then()
+      submitData(`${nowYear}-${twoNumber(nowMonth + 1)}-${twoNumber(clicked_Days)}`)
     })
 
   }
@@ -92,14 +92,25 @@ $(function () {
   buildCalendar();
 });
 
+const rankView = async (data) => {
+  $("#scoreboard").append(
+      `<a>a</a>`
+  )
+
+}
+
 const submitData = async (data) => {
-  axios.post("/calendar/post/", {
-    date: data,
-    answer: "",
-  }).then((res) => {
-    console.log(res.data);
+  try {
+    let res = await axios.post("/calendar/post/", {
+      date: data,
+      answer: "",
+      rank: {
+        0: [], 1: [], 2: [], 3: [], 4: [], 5: [], 6: [], 7: [], 8: [], 9: []
+      }
+    })
     document.getElementById("date_name").text = res.data.answer;
-  }, (error) => {
-    console.log(error)
-  })
+  } catch (e) {
+    console.error(e)
+  }
+  return res.data;
 }
