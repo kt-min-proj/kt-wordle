@@ -23,8 +23,7 @@
   {% include "member/login.html" %}
 
   <img src="{% static 'index/title.PNG' %}" style="margin-left:600px; margin-top : 50px">
-
-
+  
 
   <div class="rankar">
     <div class="aidl_text" style="color:rgba(130,128,128,1); margin-top:20%; font-size: 45px;">
@@ -36,6 +35,8 @@
       <p id="box" /p>
     </form>
   </div>
+  <div class = "qmark" onclick="exampleopen()">❔</div>
+  <div><img class = "example" src = "{% static 'index/Example.PNG' %}"></div>
   {% load static %}
   <script src="{% static 'game/game.js' %}"></script>
   <link rel="stylesheet" href="{% static 'game/game.css' %}" />
