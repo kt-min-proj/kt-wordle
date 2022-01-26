@@ -7,6 +7,7 @@ from .validators import password_validator
 
 
 class WordleUser(models.Model):
+    objects = None
     CLASS_CHOICES = (
         ("수도권1반", "수도권1반"),
         ("수도권2반", "수도권2반"),

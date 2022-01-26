@@ -6,6 +6,7 @@ from member.models import WordleUser
 # Create your models here.
 class WordleAnswers(models.Model):
     objects = None  # NOTE IDE error
+
     date = models.DateField(primary_key=True)
     answer = models.CharField(max_length=20)
 
@@ -14,12 +15,15 @@ class WordleAnswers(models.Model):
 
 
 class WordleDayRanks(models.Model):
+    objects = None
+
     count = models.IntegerField()
-    create_at = models.DateTimeField()
+    recorded_at = models.DateTimeField()
     user = models.ForeignKey(WordleUser, on_delete=models.CASCADE)
+    user_rank = models.IntegerField()
 
     class Meta:
-        db_table = "wordle_dayRank"
+        db_table = "wordle_dayrank"
 
 
 class WordleRanks(models.Model):

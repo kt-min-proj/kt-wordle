@@ -1,15 +1,23 @@
 
 <style>
     #login_error {
-        position: absolute; 
-        top: 375px; 
-        left: 640px; 
-        color: rgba(130,128,200,50);
+        position: absolute;
+        top: 375px;
+        left: 640px;
+        color: rgba(130, 128, 200, 50);
     }
 </style>
 
 {% comment %}login 했을 때 이름, logout 버튼 뜨고 아닐 경우 login 버튼 뜸{% endcomment %}
 {% if request.session.user_id %}
+<a style="line-height: 220%; position: absolute; top: 40px; left: 40px; height: 40px; width: 300px;">
+    {{ request.session.user_name }} 님<br>
+    오늘의 등수/맞춘 횟수는
+</a>
+<a href="{% url 'member:logout' %}"
+    style="position: absolute; text-align:center; text-decoration:none; top: 35px; left: 160px; background-color: rgba(65,180,176,1); height: 24px; width: 100px; border: 5px solid rgba(130,128,128,1); border-radius:15px;">
+    LOGOUT
+</a>
     <img src='{{ request.session.user_profile }}' width='20px' height="20px"
         style="border-radius: 50%; position: absolute;object-fit: cover;"
     >
@@ -25,29 +33,31 @@
     <div class="aidl_login_inner">
         <form method="post" action="{% url 'member:login' %}">
             {% csrf_token %}
-            <div class = "IDinput">
-                <div style = "color:rgba(130,128,128,1); font-size: 20px;" >
+            <div class="IDinput">
+                <div style="color:rgba(130,128,128,1); font-size: 20px;">
                     <b>ID</b>
                 </div>
                 <input type="text" name="user_id">
             </div>
-            <div class = "PWinput">
-                <div style = "color:rgba(130,128,128,1); font-size: 20px;" >
+            <div class="PWinput">
+                <div style="color:rgba(130,128,128,1); font-size: 20px;">
                     <b>PASSWORD</b>
                 </div>
-                <input type="password" name = "user_pw" >
+                <input type="password" name="user_pw">
             </div>
             <div>
-                <input class="butt" type = "submit" id ="close" value = "LOGIN">
+                <input class="butt" type="submit" id="close" value="LOGIN">
             </div>
             <div id="login_error">
                 <p> {{ login_status }} </p>
             </div>
         </form>
+        <div style="position : relative; top : 160px; left : 410px">
+            <a href="{% url 'member:signup' %}">SIGNUP</a>
+        </div>
     </div>
-    <div style = "position : absolute; top : 530px; left : 930px">
-        <a href = "{% url 'member:signup' %}">SIGNUP</a>
-    </div>
+
+
 </div>
 
 <script>
