@@ -6,11 +6,7 @@ $(function () {
     // 이전달
     $("#calendar > tbody > td").remove();
     $("#calendar > tbody > tr").remove();
-    today = new Date(
-        today.getFullYear(),
-        today.getMonth() - 1,
-        today.getDate()
-    );
+    today = new Date(today.getFullYear(), today.getMonth() - 1, today.getDate());
     buildCalendar();
   });
 
@@ -18,11 +14,7 @@ $(function () {
     // 다음달
     $("#calendar > tbody > td").remove();
     $("#calendar > tbody > tr").remove();
-    today = new Date(
-        today.getFullYear(),
-        today.getMonth() + 1,
-        today.getDate()
-    );
+    today = new Date(today.getFullYear(), today.getMonth() + 1, today.getDate());
     buildCalendar();
   });
 
@@ -33,10 +25,7 @@ $(function () {
     firstDay = new Date(nowYear, nowMonth, 1).getDay(); //1st의 요일
     lastDate = new Date(nowYear, nowMonth + 1, 0).getDate();
 
-    if (
-        (nowYear % 4 === 0 && nowYear % 100 !== 0) ||
-        nowYear % 400 === 0
-    ) {
+    if ((nowYear % 4 === 0 && nowYear % 100 !== 0) || nowYear % 400 === 0) {
       //윤년 적용
       lastDate[1] = 29;
     }
@@ -54,9 +43,7 @@ $(function () {
         $("#calendar tbody:last").append("<tr></tr>");
       }
 
-      $("#calendar tbody:last").append(
-          `<td><input class='date' name='date' type='button' value=${i} /></td>`
-      );
+      $("#calendar tbody:last").append(`<td><input class='date' name='date' type='button' value=${i} /></td>`);
     }
     if ($("#calendar > tbody > td").length % 7 != 0) {
       //마지막 줄 빈칸
@@ -66,11 +53,7 @@ $(function () {
     }
     $("td > input.date").each(function (index) {
       // 오늘 날짜 표시
-      if (
-          nowYear == date.getFullYear() &&
-          nowMonth == date.getMonth() &&
-          $("td > input.date").eq(index).val() == date.getDate()
-      ) {
+      if (nowYear == date.getFullYear() && nowMonth == date.getMonth() && $("td > input.date").eq(index).val() == date.getDate()) {
         $("td > input.date").eq(index).addClass("colToday");
       }
     });
@@ -94,6 +77,7 @@ $(function () {
   buildCalendar();
 });
 
+// Rendering data
 const rankView = async (data) => {
   $("#scoreboard > br").remove()
   $("#scoreboard > a").remove()
@@ -101,17 +85,13 @@ const rankView = async (data) => {
   let o
   for (let i = 0; i <= 9; i++) {
     o = data.rank[i]
-    $("#scoreboard").append(
-        `<a>${i + 1} - ${o}</a><br>`
-    )
+    $("#scoreboard").append(`<a>${i + 1} - ${o}</a><br>`)
   }
 }
 
 const submitData = async (data) => {
   let res = await axios.post("/calendar/post/", {
-    date: data,
-    answer: "",
-    rank: {
+    date: data, answer: "", rank: {
       0: [], 1: [], 2: [], 3: [], 4: [], 5: [], 6: [], 7: [], 8: [], 9: []
     }
   })

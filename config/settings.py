@@ -140,3 +140,20 @@ LOGOUT_REDIRECT_URL = "/member/login/"
 MESSAGE_TAGS = {
     messages.ERROR: "danger",
 }
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+        }
+    },
+    'loggers': {
+        'django.db.backends': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+        },
+    }
+}

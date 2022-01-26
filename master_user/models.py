@@ -18,7 +18,7 @@ class WordleDayRanks(models.Model):
     objects = None
 
     count = models.IntegerField()
-    recorded_at = models.DateTimeField()
+    create_at = models.DateTimeField()
     user = models.ForeignKey(WordleUser, on_delete=models.CASCADE)
     user_rank = models.IntegerField()
 
