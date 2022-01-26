@@ -1,11 +1,13 @@
 # python
 
 from django.contrib import messages
+
 # django
 from django.shortcuts import render, redirect, HttpResponse
 from django.utils import timezone
 
 from member.models import WordleUser
+
 # in app
 from .models import WordleAnswers, WordleDayRanks, WordleRanks
 
@@ -30,8 +32,7 @@ def main(request):
     except:
         data = ""
 
-    return render(request, "master_user/main.html",
-                  {"data": data, "condata": ""})
+    return render(request, "master_user/main.html", {"data": data, "condata": ""})
     # try:
     #     condata = wordle_ranks.objects.filter(date=datetime.now()).select_related('user').order_by('user_rank')
     # except:
