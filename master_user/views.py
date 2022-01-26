@@ -8,7 +8,7 @@ from django.contrib import messages
 
 # in app
 from .models import WordleAnswers, WordleDayRanks, WordleRanks
-from member.models import WordleUser
+
 
 # Create your views here.
 # 화면 첫 진입 시에 사용할 view
