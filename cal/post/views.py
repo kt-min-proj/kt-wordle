@@ -35,9 +35,10 @@ def calendar_view(request):
 
 
 def calendar_rank(data: dict):
-    b = [str(y['answer']) \
-         for y in WordleAnswers.objects.filter(
-            date='2022-01-27').values('answer')]
+    b = [
+        str(y["answer"])
+        for y in WordleAnswers.objects.filter(date="2022-01-27").values("answer")
+    ]
 
     for i in range(10):
         # NOTE WordleUser 모델을 불러 와야 할것 같음
