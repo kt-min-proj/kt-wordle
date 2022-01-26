@@ -21,7 +21,7 @@ def signup_custom(request):
     classes = [user_class[1] for user_class in WordleUser.CLASS_CHOICES]
 
     if request.method == "POST":
-        form = SignUpForm(request.POST)
+        form = SignUpForm(request.POST, request.FILES)
         if form.is_valid():
             user = form.save(commit=False)  # integer로 변경해서 저장
             user.user_pw = PasswordHasher().hash(user.user_pw)
@@ -63,6 +63,7 @@ def login_custom(request):
         else:
             request.session["user_id"] = user.user_id
             request.session["user_name"] = user.user_name
+            request.session["user_profile"] = user.user_profile.url
         return redirect("member:index_test")
     else:
         return render(request, "index/aidle_main.html")

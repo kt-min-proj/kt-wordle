@@ -9,7 +9,7 @@
 <body style="background-color: rgba(223,223,223,1);">
   <img src="{% static 'index/title.PNG' %}" style="margin-left:600px; margin-top : 50px">
   
-  <form action="{% url 'member:signup' %}" method="post">
+  <form action="{% url 'member:signup' %}" method="post" enctype="multipart/form-data">
       {% csrf_token %}
 
       <div>
@@ -59,15 +59,27 @@
             <b>{{ form.user_class.errors }}</b>
           </div>
       </div>
-      
+
+        <div>
+          <div style="color:rgba(130,128,128,1); font-size: 30px; position:absolute; top:580px; left:510px">
+              <b>IMAGE :</b>
+          </div>
+          <input type="file" name="user_profile" id="user_profile"
+              style="position: absolute; top:585px; left:650px; height : 40px; font-size : 30px"
+              value="{{ form.user_profile.value | default_if_none:'' }}">
+          <div style="color:rgb(124, 39, 39); font-size: 15px; position:absolute; top:620px; left:630px">
+            <b>{{ form.user_profile.errors }}</b>
+          </div>
+      </div>
+
       <datalist id="class_options">
           {% for class in classes %}
               <option value="{{ class }}" label="{{ class }}"></option>
           {% endfor %}
       </datalist>
       <div>
-          <input class = "butt" type="submit" value="SIGNUP" id="submit"
-          style="position:absolute; top : 600px; left : 680px;">
+          <input type="submit" value="SIGNUP" id="submit"
+          style="position:absolute; top : 700px; left : 680px; background-color:rgba(65,180,176,1) ; height : 60px; width : 150px;">
       </div>
   </form>
 </body>
