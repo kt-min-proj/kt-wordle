@@ -7,7 +7,7 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.decorators import api_view
 
-from master_user.models import WordleAnswers
+from master_user.models import WordleAnswers, WordleDayRanks, WordleUser
 
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 
