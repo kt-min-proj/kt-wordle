@@ -1,4 +1,9 @@
+body{
+    background-color: #f5f5f5;
+}
+
 /* 위에 단어 입력하는 부분*/
+
 .container{
     width: 100%;
     margin-top: 50px;
@@ -12,9 +17,51 @@
 
 .container .today_answer{
     text-align: center;
-
+    font-size: 20px;
 }
 
+.container .edit-delete{
+    display: flex;
+    max-width: 300px;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.container .edit_link{
+    display: inline-block;
+    text-decoration: none;
+    color: #fff;
+    text-align: center;
+    background: none;
+    padding: 10px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    width: 100%;
+    background: #63b2af;
+}
+
+
+.container .delete_answer{
+    display: inline-block;
+    border-radius: 3px;
+    border: none;
+    color: #fff;
+    padding: 0;
+    width: 100%;
+}
+.container .delete_answer button{
+    width: 100%;
+    height: 100%;
+    background: red;
+    padding: 10px 20px;
+    font-size: 15px;
+    border: none;
+    border-radius: 3px;
+    color: #fff;
+    width:100%;
+}
 /* 입력창 디자인 부분 */
 .container > .register_answer{
     display: flex;
@@ -26,7 +73,7 @@
 
 .container > .register_answer .answer{
     border-radius: 3px 0 0 3px;
-    border: 3px solid #4b529f;
+    border: 3px solid #63b2af;
     border-right: none;
     padding: 10px;
     flex: 1;
@@ -35,7 +82,7 @@
 
 .container > .register_answer .answer-button{
     text-decoration: none;
-    background: #4b529f;
+    background: #63b2af;
     border: none;
     border-radius: 0 3px 3px 0;
     padding: 0 20px 0 20px;
@@ -43,6 +90,8 @@
     color: #fff;
     font-weight: bold;
 }
+
+
 
 /* 아래에 1~10등 출력하는 부분 */
 /* 제목, 버튼 css */
@@ -63,7 +112,7 @@
 }
 
 .get_section .winner_form input{
-    background: #3c407f;
+    background: #63b2af;
     border: none;
     border-radius: 3px;
     color: #fff;
