@@ -6,3 +6,12 @@ function exampleopen() {
     document.querySelector(".example").style.display = "flex"
   }
 }
+
+function classrankopen() {
+  if (document.querySelector(".classrank").style.display == "flex") {
+    document.querySelector(".classrank").style.display = "none"
+  }
+  else {
+    document.querySelector(".classrank").style.display = "flex"
+  }
+}
