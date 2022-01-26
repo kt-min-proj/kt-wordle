@@ -31,8 +31,7 @@ def main(request):
     except:
         data = ""
 
-    return render(request, "master_user/main.html",
-                  {"data": data, "condata": ""})
+    return render(request, "master_user/main.html", {"data": data, "condata": ""})
     # try:
     #     condata = wordle_ranks.objects.filter(date=datetime.now()).select_related('user').order_by('user_rank')
     # except:
