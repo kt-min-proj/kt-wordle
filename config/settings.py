@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 from django.contrib.messages import constants as messages
@@ -81,12 +82,14 @@ WSGI_APPLICATION = "config.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.mysql",
-        "NAME": "wordle",
-        "USER": "WORDLE",
-        "PASSWORD": "123412",
-        "HOST": "146.56.160.85",
-        "PORT": "3306",
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        # "ENGINE": "django.db.backends.mysql",
+        # "NAME": "wordle",
+        # "USER": "WORDLE",
+        # "PASSWORD": "123412",
+        # "HOST": "146.56.160.85",
+        # "PORT": "3306",
     }
 }
 

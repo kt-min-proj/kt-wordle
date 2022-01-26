@@ -3,7 +3,6 @@ from django.db import models
 from member.models import WordleUser
 
 
-# Create your models here.
 class WordleAnswers(models.Model):
     objects = None  # NOTE IDE error
 

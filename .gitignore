@@ -135,3 +135,6 @@ dmypy.json
 # Nodejs
 package-lock.json
 node_modules/
+
+# Django
+migrations/

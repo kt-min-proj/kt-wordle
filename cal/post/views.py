@@ -7,7 +7,7 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.decorators import api_view
 
-from master_user.models import WordleAnswers, WordleDayRanks
+from master_user.models import WordleAnswers, WordleDayRanks, WordleUser
 
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 
@@ -40,7 +40,11 @@ def calendar_rank(data: dict):
         # NOTE WordleUser 모델을 불러 와야 할것 같음
         data[f"{i}"] = []
         for ii in d:
-            data[f"{i}"].append(ii.user_id)
             data[f"{i}"].append(ii.user_rank)
+            data[f"{i}"].append(ii.user_id)
+            a = WordleUser.objects.select_related('user_id')
+            print(a)
+            # for iii in a: print(iii)
+            # data[f"{i}"].append()
 
     return data
