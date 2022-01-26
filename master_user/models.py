@@ -6,7 +6,7 @@ from member.models import WordleUser
 class WordleAnswers(models.Model):
     objects = None  # NOTE IDE error
 
-    date = models.DateField(primary_key=True)
+    date = models.DateTimeField()
     answer = models.CharField(max_length=20)
 
     class Meta:
@@ -19,6 +19,8 @@ class WordleDayRanks(models.Model):
     count = models.IntegerField()
     create_at = models.DateTimeField()
     user = models.ForeignKey(WordleUser, on_delete=models.CASCADE)
+    # NOTE 한개안에 두개의 fk를 사용시 오류발생
+    # name = models.ForeignKey(WordleUser, on_delete=models.CASCADE)
     user_rank = models.IntegerField(null=True)
 
     class Meta:
@@ -27,8 +29,7 @@ class WordleDayRanks(models.Model):
 
 class WordleRanks(models.Model):
     user = models.ForeignKey(WordleUser, on_delete=models.CASCADE)
-    user_rank = models.IntegerField()
-    # 이 부분은 데이트 필드만 둬도 괜찮을 것 같다.
+    user_rank = models.IntegerField(null=True)
     date = models.DateField()
 
     class Meta:

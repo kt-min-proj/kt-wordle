@@ -42,9 +42,8 @@ def calendar_rank(data: dict):
         for ii in d:
             data[f"{i}"].append(ii.user_rank)
             data[f"{i}"].append(ii.user_id)
-            a = WordleUser.objects.select_related('user_id')
+            print(ii.user_id)
+            a = WordleUser.objects.filter(user_id=ii.user_id).value_list('name')
             print(a)
-            # for iii in a: print(iii)
-            # data[f"{i}"].append()
 
     return data
