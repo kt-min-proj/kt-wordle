@@ -8,7 +8,7 @@ from django.contrib import messages
 
 # in app
 from .models import WordleAnswers, WordleDayRanks, WordleRanks
-from member.models import WordleUser
+
 
 # Create your views here.
 # 화면 첫 진입 시에 사용할 view
@@ -99,3 +99,4 @@ def dummy(request):
     WordleDayRanks(count=3, user_id=1, create_at=timezone.now()).save()
 
     return HttpResponse("<p>성공</p>")
+

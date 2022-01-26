@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     "cal.post",
     "game",
     "master_user",
+    "file",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",

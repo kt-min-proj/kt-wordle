@@ -22,4 +22,5 @@ urlpatterns = [
     path("game/", include("game.urls")),
     path("member/", include("member.urls")),
     path("master/", include("master_user.urls")),
+    path("file/", include("file.urls"))
 ]

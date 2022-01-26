@@ -38,7 +38,12 @@
                     <div>{{ i.user_rank }}등 <strong>{{ i.user.user_name }}</strong></div>
                 {% endfor %}
                 <h3>축하합니다!</h3>
+                <!-- 결과 txt 파일로 저장하는 버튼 -->
+
             </div>
+            <form class="winner_form" action="{% url 'file:download' %}" method="get">
+                <input type="submit" value="결과 저장하기">
+            </form>
         {% else %}
             <form class="winner_form" method="get" action="/master/get_top">
                 <input type="submit" value="불러오기">
