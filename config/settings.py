@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     "cal.post",
     "game",
     "master_user",
+    "file",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -140,3 +141,9 @@ LOGOUT_REDIRECT_URL = "/member/login/"
 MESSAGE_TAGS = {
     messages.ERROR: "danger",
 }
+
+# 사진 저장하는 부분...
+
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR / "media"

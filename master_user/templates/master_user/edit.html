@@ -1,14 +1,19 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>정답 수정 화면</title>
+    <link rel="stylesheet" href="{% static 'master_user/css/edit.css'%}">
 </head>
-<body>
-    <h1 class="today_keyword">수정할 키워드를 입력해 주세요</h1>
-    <form class="edit_answer" method="get" action="/master/edit_answer">
-        <input class="answer" type="text" name="answer">
-        <input class="answer-button" type="submit" value="수정하기">
-    </form>
+
+<body style = "background-color: rgba(223,223,223,1);">
+    <div class="edit-container">
+        <h1 class="today_keyword">수정할 키워드를 입력해 주세요</h1>
+        <form class="edit_answer" method="get" action="/master/edit-answer/">
+            <input class="answer" type="text" name="answer">
+            <input class="answer-button" type="submit" value="수정하기">
+        </form>
+    </div>
 </body>
 </html>
