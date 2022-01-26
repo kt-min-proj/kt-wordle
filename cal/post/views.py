@@ -37,7 +37,7 @@ def calendar_view(request):
 def calendar_rank(data: dict):
     for i in range(10):
         d = WordleDayRanks.objects.filter(user_rank=i)
-        # NOTE WordleUser 모델을 불러와야할것 같음
+        # NOTE WordleUser 모델을 불러 와야 할것 같음
         data[f"{i}"] = []
         for ii in d:
             data[f"{i}"].append(ii.user_id)
