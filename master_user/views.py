@@ -101,4 +101,3 @@ def dummy(request):
     WordleDayRanks(count=3, user_id=1, create_at=timezone.now()).save()
 
     return HttpResponse("<p>성공</p>")
-
