@@ -6,7 +6,7 @@ from member.models import WordleUser
 class WordleAnswers(models.Model):
     objects = None  # NOTE IDE error
 
-    date = models.DateTimeField()
+    date = models.DateTimeField(primary_key=True)
     answer = models.CharField(max_length=20)
 
     class Meta:
