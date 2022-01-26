@@ -30,13 +30,15 @@ def main(request):
     except:
         data = ""
     try:
-        condata = WordleRanks.objects.filter(date=datetime.now()).select_related('user').order_by('user_rank')
+        condata = (
+            WordleRanks.objects.filter(date=datetime.now())
+            .select_related("user")
+            .order_by("user_rank")
+        )
     except:
-        condata = ''
-
+        condata = ""
 
     return render(request, "master_user/main.html", {"data": data, "condata": condata})
-
 
 
 # 상위 10명 가져와서 저장하는 view
