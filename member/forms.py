@@ -13,5 +13,5 @@ class SignUpForm(forms.ModelForm):
             "user_pw": "PASSWORD",
             "user_name": "NAME",
             "user_class": "CLASS",
-            "user_profile": "profile"
+            "user_profile": "profile",
         }

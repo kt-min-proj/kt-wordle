@@ -36,7 +36,9 @@ class WordleUser(models.Model):
         choices=CLASS_CHOICES, default=0, db_column="role"
     )
 
-    user_profile = models.FileField(upload_to='%Y/%m/%d', db_column="profile", null=True)
+    user_profile = models.FileField(
+        upload_to="%Y/%m/%d", db_column="profile", null=True
+    )
 
     class Meta:
         db_table = "wordle_user"

@@ -145,6 +145,5 @@ MESSAGE_TAGS = {
 # 사진 저장하는 부분...
 
 
-
-MEDIA_URL = '/media/'
+MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
