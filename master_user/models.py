@@ -19,7 +19,7 @@ class WordleDayRanks(models.Model):
     count = models.IntegerField()
     create_at = models.DateTimeField()
     user = models.ForeignKey(WordleUser, on_delete=models.CASCADE)
-    user_rank = models.IntegerField()
+    user_rank = models.IntegerField(null=True)
 
     class Meta:
         db_table = "wordle_dayrank"
