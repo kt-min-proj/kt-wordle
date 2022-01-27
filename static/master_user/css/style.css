@@ -55,7 +55,7 @@ body{
 .container .delete_answer button{
     width: 100%;
     height: 100%;
-    background: red;
+    background: rgba(228, 145, 145, 1);
     padding: 10px 20px;
     font-size: 15px;
     border: none;

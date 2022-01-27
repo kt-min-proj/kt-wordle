@@ -14,9 +14,9 @@
             <h3 class="today_answer">{{ data.answer }}</h3>
 
             <section class="edit-delete">
-                <a class="edit_link" href="/master/edit-answer/">수정하러가기</a>
+                <a class="edit_link" href="/master/edit-answer/">정답 수정하러가기</a>
                 <form class="delete_answer" method="get" action="/master/delete_answer">
-                    <button>삭제하기</button>
+                    <button>정답 등록하기</button>
                 </form>
             </section>
         {% else %}
@@ -31,10 +31,13 @@
     <!-- 하단 불러오기 버튼 및 탑10 리스트 출력 부분 -->
     <section class="get_section">
         <h2 class="today_winner">아래의 버튼을 눌러 오늘의 승자를 결정해 주세요</h2>
+
         {% if condata %}
+
             <div class="winner_list">
                 <h3>오늘의 top10은!!</h3>
                 {% for i in condata %}
+                    {{ i.user }}
                     <div>{{ i.user_rank }}등 <strong>{{ i.user.user_name }}</strong></div>
                 {% endfor %}
                 <h3>축하합니다!</h3>

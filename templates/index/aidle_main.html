@@ -12,6 +12,7 @@
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src={% static "calendar/calendar.js" %}></script>
 <script src={% static "index/aidle.js" %}></script>
+<script src={% static "master_user/javascript/getTop10.js" %}></script>
 
 
 {% if messages %}
@@ -42,9 +43,17 @@
 <div>
   <div class = "qmark" onclick="exampleopen()">❔</div>
   <div><img class = "example" src = "{% static 'index/Example.PNG' %}"></div>
+  <script> var answer = '{{ data.answer }}'</script>
   {% load static %}
   <script src="{% static 'game/game.js' %}"></script>
   <link rel="stylesheet" href="{% static 'game/game.css' %}"/>
+
+  <form method="post" name="send" action="{% url 'game:send' %}">
+      {% csrf_token %}
+    <input type="hidden" name="recorded_at" value=""> 
+    <input type="hidden" name="user" value=""> 
+    <input type="hidden" name="count" value=""> 
+    </form>
 </div>
 <div class="sideicon">
   <input type="checkbox" id="menuicon">
