@@ -53,13 +53,13 @@ def login_custom(request):
                 return render(
                     request,
                     "index/aidle_main.html",
-                    { "login_status": "ID 혹은 PASSWORD를 확인해주세요." },
+                    {"login_status": "ID 혹은 PASSWORD를 확인해주세요."},
                 )
         except:
             return render(
                 request,
                 "index/aidle_main.html",
-                { "login_status": "ID 혹은 PASSWORD를 확인해주세요." },
+                {"login_status": "ID 혹은 PASSWORD를 확인해주세요."},
             )
 
         else:

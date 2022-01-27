@@ -16,13 +16,14 @@ def mainplay(request):
     n = WordleAnswers.objects.get(date=timezone.now())
     data = n
     return render(
-        request, 
-        "index/aidle_main.html", 
+        request,
+        "index/aidle_main.html",
         {
             "data": data,
             "class_values": class_avg(request),
-        }
+        },
     )
+
 
 # 맞춘사람 wordle_dayRank저장 (시간, userid, 횟수)
 def sendinfo(request):
@@ -36,6 +37,7 @@ def sendinfo(request):
         )
         record.save()
         return redirect("../main/")
+
 
 # class average (class name, count, record)
 def class_avg(request):
@@ -77,5 +79,5 @@ def class_avg(request):
 
     # change notation
     np.set_printoptions(precision=6, suppress=True)
-    
+
     return class_values
