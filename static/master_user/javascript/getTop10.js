@@ -7,6 +7,7 @@ ajax.then(function(response){
     for(let i =0; i < result.length; i++){
         let div = document.createElement('div');
         div.innerHTML = result[i].user_rank + ' ' + result[i].user_name;
+        div.style = 'margin: 15px 0; text-align: center;'
         ranker.appendChild(div)
     }
 })
