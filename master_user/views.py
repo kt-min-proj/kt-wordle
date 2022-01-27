@@ -1,27 +1,18 @@
 # python
-from cmath import nan
-from datetime import datetime, timedelta
+from datetime import datetime
 import numpy as np
 
 # django
 from django.shortcuts import render, redirect, HttpResponse
 from django.utils import timezone
 from django.contrib import messages
-<<<<<<< HEAD
-from django.db.models import Sum, Count, Max, Min, Avg
+from django.http import JsonResponse
+from django.forms.models import model_to_dict
 
 # in app
 from .models import WordleAnswers, WordleDayRanks, WordleRanks
 from member.models import WordleUser
-=======
-from django.core import serializers
-from django.http import JsonResponse
 
-# in app
-from .models import WordleAnswers, WordleDayRanks, WordleRanks
-
-from django.forms.models import model_to_dict
->>>>>>> b994e2ca07d7880f721de4623381f0d76630e53e
 
 # Create your views here.
 # 화면 첫 진입 시에 사용할 view
@@ -172,7 +163,7 @@ def class_avg(request):
 
     return render(
         request,
-        "master_user/avg_test.html",
+        "master_user/class_avg.html",
         {
             "class_values": class_values,
         },
