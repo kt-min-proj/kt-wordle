@@ -76,7 +76,7 @@ def login_custom(request):
 
 
 def logout_custom(request):
-    del request.session["id"]  # 유저 식별정보 삭제
+    # del request.session["id"]  # 유저 식별정보 삭제
     del request.session["user_id"]  # 유저 아이디 삭제
     del request.session["user_name"]  # 유저 이름 삭제
     del request.session["user_profile"]  # 프로필 삭제
