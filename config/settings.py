@@ -79,12 +79,12 @@ WSGI_APPLICATION = "config.wsgi.application"
 
 DATABASES = {
     "default": {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'wordle',
-        'USER': 'wordle',
-        'PASSWORD': 'qotjdgns',
-        'HOST': 'localhost',
-        'PORT': '3306',
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": "wordle",
+        "USER": "wordle",
+        "PASSWORD": "qotjdgns",
+        "HOST": "localhost",
+        "PORT": "3306",
     }
 }
 

@@ -38,15 +38,14 @@ def calendar_rank(data: dict):
     dat = "2022-01-27"
     b = [
         str(y["answer"])
-        for y in
-        WordleAnswers.objects.filter(date=dat).values("answer")
+        for y in WordleAnswers.objects.filter(date=dat).values("answer")
     ]
 
     for i in range(10):
         # NOTE WordleUser 모델을 불러 와야 할것 같음
         data[f"{i}"] = []
         # TODO fix using comprehension
-        print('a')
+        print("a")
 
         d = WordleAnswers.objects.filter(date=timeconvert(dat))
         for ii in d:
@@ -58,6 +57,6 @@ def calendar_rank(data: dict):
 
 
 def timeconvert(date):
-    result = datetime.strptime(date, '%Y-%m-%d').strftime('%Y-%m-%d 00:00:00')
+    result = datetime.strptime(date, "%Y-%m-%d").strftime("%Y-%m-%d 00:00:00")
 
     return result
