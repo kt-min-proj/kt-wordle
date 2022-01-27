@@ -79,13 +79,17 @@ $(function () {
 
 // Rendering data
 const rankView = async (data) => {
-  $("#scoreboard > br").remove()
-  $("#scoreboard > a").remove()
+  $("#dayrankname").remove()
+  $("#scoreboard > div > a").remove()
 
   let o
   for (let i = 0; i <= 9; i++) {
     o = data.rank[i]
-    $("#scoreboard").append(`<a>${i + 1} - ${o[0]} ${o[1]} ${o[2]}</a><br>`)
+    $("#scoreboard").append(`<div id="rankBoard">
+      <a id="dayrankRank">${i + 1} - </a>
+      <a id="dayrankName">${o[0]}</a>
+      <a id="dayrankAccount">${o[1]}</a>
+    </div>`)
   }
 }
 
