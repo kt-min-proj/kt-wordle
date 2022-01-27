@@ -81,6 +81,6 @@ def logout_custom(request):
     del request.session["id"]  # 유저 식별정보 삭제
     del request.session["user_id"]  # 개별 삭제
     del request.session["user_name"]  # 개별 삭제
-    #del request.session["user_profile"]  # 프로필 삭제
+    # del request.session["user_profile"]  # 프로필 삭제
     request.session.flush()  # 전체 삭제
     return redirect("member:login")

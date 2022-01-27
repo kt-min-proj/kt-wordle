@@ -25,9 +25,7 @@ def main(request):
             messages.add_message(request, messages.ERROR, "권한이 없습니다.")
             return redirect("game:main")
     except:
-        return render(
-            request, "game/main.html", {"login_status": "로그인 후 입력해주세요."}
-        )
+        return render(request, "game/main.html", {"login_status": "로그인 후 입력해주세요."})
 
     try:
         a = WordleAnswers.objects.get(date=timezone.now())
@@ -35,9 +33,13 @@ def main(request):
     except:
         data = ""
     try:
-        condata = WordleRanks.objects.filter(date=datetime.now()).select_related('user').order_by('user_rank')
+        condata = (
+            WordleRanks.objects.filter(date=datetime.now())
+            .select_related("user")
+            .order_by("user_rank")
+        )
     except:
-        condata = ''
+        condata = ""
 
     return render(request, "master_user/main.html", {"data": data, "condata": condata})
 
