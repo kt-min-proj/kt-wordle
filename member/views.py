@@ -63,9 +63,7 @@ def login_custom(request):
             )
 
         else:
-
             request.session["id"] = user.id
-
             request.session["user_id"] = user.user_id
             request.session["user_name"] = user.user_name
             if user.user_profile:
@@ -79,8 +77,8 @@ def login_custom(request):
 
 def logout_custom(request):
     del request.session["id"]  # 유저 식별정보 삭제
-    del request.session["user_id"]  # 개별 삭제
-    del request.session["user_name"]  # 개별 삭제
+    del request.session["user_id"]  # 유저 아이디 삭제
+    del request.session["user_name"]  # 유저 이름 삭제
     del request.session["user_profile"]  # 프로필 삭제
     request.session.flush()  # 전체 삭제
     return redirect("member:login")
