@@ -10,22 +10,13 @@
 
 {% comment %}login 했을 때 이름, logout 버튼 뜨고 아닐 경우 login 버튼 뜸{% endcomment %}
 {% if request.session.user_id %}
-<a style="line-height: 220%; position: absolute; top: 40px; left: 40px; height: 40px; width: 300px;">
-    {{ request.session.user_name }} 님<br>
-    오늘의 등수/맞춘 횟수는
-</a>
-<a href="{% url 'member:logout' %}"
-    style="position: absolute; text-align:center; text-decoration:none; top: 35px; left: 160px; background-color: rgba(65,180,176,1); height: 24px; width: 100px; border: 5px solid rgba(130,128,128,1); border-radius:15px;">
-    LOGOUT
-</a>
     <img src='{{ request.session.user_profile }}' width='20px' height="20px"
-        style="border-radius: 50%; position: absolute;object-fit: cover;"
+        style="border-radius: 50%; position: fixed;object-fit: cover;"
     >
-    <a style="line-height: 220%; position: absolute; top: 40px; left: 40px; height: 40px; width: 300px;">
-        {{ request.session.user_name }} 님<br>
-        오늘의 등수/맞춘 횟수는
+    <a class = "aidl_text" style="position:fixed; color :rgba(130, 128, 128, 1); font-size : 20px; top : 30px; left : 50px">
+        {{ request.session.user_name }} 님
     </a>
-    <a href="{% url 'member:logout' %}" class = "butt" style="position: absolute; text-align:center; text-decoration:none; top: 35px; left: 160px; background-color: rgba(65,180,176,1); height: 24px; width: 100px; border: 5px solid rgba(130,128,128,1); border-radius:15px;">
+    <a href="{% url 'member:logout' %}" class = "butt" style="position: fixed; text-align:center; text-decoration:none; top: 35px; left: 160px; background-color: rgba(65,180,176,1); height: 24px; width: 100px; border: 5px solid rgba(130,128,128,1); border-radius:15px;">
         LOGOUT
     </a>
 {% else %}
