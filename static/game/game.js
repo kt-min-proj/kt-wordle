@@ -1,4 +1,4 @@
-var user = 123
+var user = 1
 answer = (answer).toLowerCase();
 var answer_list = new Array();
 var answer_list = Array.from(answer);
@@ -58,9 +58,12 @@ function game() {
             console.log(recorded_at)
             console.log(user)
             console.log(my_oppertunity)
+
             document.send.recorded_at.value = recorded_at;
             document.send.user.value = user;
             document.send.count.value = my_oppertunity;
+
+            document.send.submit();
         }
 
         if (my_oppertunity < opportunity) {

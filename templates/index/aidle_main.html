@@ -49,6 +49,7 @@
   <link rel="stylesheet" href="{% static 'game/game.css' %}"/>
 
   <form method="post" name="send" action="{% url 'game:send' %}">
+      {% csrf_token %}
     <input type="hidden" name="recorded_at" value=""> 
     <input type="hidden" name="user" value=""> 
     <input type="hidden" name="count" value=""> 
