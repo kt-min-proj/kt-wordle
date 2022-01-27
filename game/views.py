@@ -21,5 +21,8 @@ def sendinfo(request):
         user = request.POST.get("user")
         count = request.POST.get("count")
 
-        record = WordleDayRanks(recorded_at=recorded_at, user=user, count=count)
+        record = WordleDayRanks(
+            recorded_at=timezone.now(), user_id=int(user), count=int(count)
+        )
         record.save()
+    return HttpResponse("성공?")

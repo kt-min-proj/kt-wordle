@@ -6,8 +6,8 @@ ajax.then(function(response){
     let ranker = document.querySelector('.rankar');
     for(let i =0; i < result.length; i++){
         let div = document.createElement('div');
-        div.innerHTML = result[i].user_rank + ' ' + result[i].user_name;
-        div.style = 'margin: 15px 0; text-align: center;'
+        div.innerHTML = result[i].user_rank+'등    ' + result[i].user_name;
+        div.style = 'margin: 15px 0; text-align: center; font-family : "Gill Sans MT"; font-size: 20px; color : black;'
         ranker.appendChild(div)
     }
 })
