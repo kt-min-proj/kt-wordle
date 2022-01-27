@@ -1,7 +1,7 @@
 all: makemigration migrate runserver
-	
+
 makemigration:
-	python manage.py makemigrations master_user member
+	python manage.py makemigrations --merge
 
 migrate:
 	python manage.py migrate --fake
