@@ -30,8 +30,8 @@
 
 <div class="rankar">
   <div class="aidl_text"
-       style="color:rgba(130,128,128,1); margin-top:20%; font-size: 45px;">
-    RANK
+       style="color:rgba(130,128,128,1); margin-top:10%; font-size: 45px;">
+       RANK
   </div>
 
 </div>
@@ -47,7 +47,8 @@
   {% load static %}
   <script src="{% static 'game/game.js' %}"></script>
   <link rel="stylesheet" href="{% static 'game/game.css' %}"/>
-
+  <script> var answer = '{{ data.answer }}'</script>
+  <script> var user = '{{ request.session.id }}'</script>
   <form method="post" name="send" action="{% url 'game:send' %}">
       {% csrf_token %}
     <input type="hidden" name="recorded_at" value=""> 
