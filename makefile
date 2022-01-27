@@ -5,6 +5,7 @@ makemigration:
 
 migrate:
 	python manage.py migrate --fake
+	python manage.py migrate
 
 runserver:
 	python manage.py runserver
