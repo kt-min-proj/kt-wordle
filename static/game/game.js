@@ -1,4 +1,3 @@
-var user = 1
 answer = (answer).toLowerCase();
 var answer_list = new Array();
 var answer_list = Array.from(answer);

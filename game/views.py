@@ -1,7 +1,7 @@
 from datetime import timezone
 from django.utils import timezone
 from django.http import HttpResponse, JsonResponse, request
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 
 
 from master_user.models import WordleAnswers, WordleDayRanks
@@ -25,4 +25,4 @@ def sendinfo(request):
             recorded_at=timezone.now(), user_id=int(user), count=int(count)
         )
         record.save()
-    return HttpResponse("성공?")
+        return redirect("../main/")
