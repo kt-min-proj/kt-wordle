@@ -85,7 +85,7 @@ const rankView = async (data) => {
   let o
   for (let i = 0; i <= 9; i++) {
     o = data.rank[i]
-    $("#scoreboard").append(`<a>${i + 1} - ${o}</a><br>`)
+    $("#scoreboard").append(`<a>${i + 1} - ${o[0]} ${o[1]} ${o[2]}</a><br>`)
   }
 }
 
