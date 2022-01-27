@@ -54,7 +54,6 @@ def calendar_rank(data: dict):
                 data[f"{i}"].append(ib["user_name"])
                 data[f"{i}"].append(ia["user_id"])
                 data[f"{i}"].append(ib["user_id"])
-            print(data[f"{i}"])
     return data
 
 
