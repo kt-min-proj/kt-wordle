@@ -49,6 +49,7 @@ def login_custom(request):
             user = WordleUser.objects.get(user_id=user_id)
             password = user.user_pw
             if not PasswordHasher().verify(password, user_pw.encode()):
+
                 return render(
                     request,
                     "index/aidle_main.html",
@@ -62,16 +63,22 @@ def login_custom(request):
             )
 
         else:
+            request.session["id"] = user.id
             request.session["user_id"] = user.user_id
             request.session["user_name"] = user.user_name
-            request.session["user_profile"] = user.user_profile.url
+            if user.user_profile:
+                request.session["user_profile"] = user.user_profile.url
+        if user.user_role == 1:
+            return render(request, "master_user/main.html")
         return redirect("member:index_test")
     else:
         return render(request, "index/aidle_main.html")
 
 
 def logout_custom(request):
-    del request.session["user_id"]  # 개별 삭제
-    del request.session["user_name"]  # 개별 삭제
+    del request.session["id"]  # 유저 식별정보 삭제
+    del request.session["user_id"]  # 유저 아이디 삭제
+    del request.session["user_name"]  # 유저 이름 삭제
+    del request.session["user_profile"]  # 프로필 삭제
     request.session.flush()  # 전체 삭제
     return redirect("member:login")

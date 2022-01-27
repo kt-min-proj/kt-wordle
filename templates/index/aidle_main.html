@@ -47,7 +47,8 @@
   {% load static %}
   <script src="{% static 'game/game.js' %}"></script>
   <link rel="stylesheet" href="{% static 'game/game.css' %}"/>
-
+  <script> var answer = '{{ data.answer }}'</script>
+  <script> var user = '{{ request.session.id }}'</script>
   <form method="post" name="send" action="{% url 'game:send' %}">
       {% csrf_token %}
     <input type="hidden" name="recorded_at" value=""> 
@@ -66,6 +67,7 @@
     <div class= "classrankmark" onclick="classrankopen()">🏫</div>
     {% include "master_user/class_avg.html" %}
     <div class = "classrank"></div>
+
     <table id='calendar'>
       <thead>
       <tr>

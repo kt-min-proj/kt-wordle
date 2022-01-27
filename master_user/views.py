@@ -163,7 +163,7 @@ def class_avg(request):
 
     return render(
         request,
-        "master_user/class_avg.html",
+        "index/aidle_main.html",
         {
             "class_values": class_values,
         },
