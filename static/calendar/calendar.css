@@ -46,6 +46,16 @@ input.date {
   margin: 6px;
 }
 
-#dayRankName {
-  width: 50%;
+#dayrankName,
+#dayrankRank,
+#dayrankAccount {
+  display: inline-block;
+}
+
+#dayrankRank {
+  width: 10%;
+}
+
+#dayrankAccount {
+  float: right;
 }
