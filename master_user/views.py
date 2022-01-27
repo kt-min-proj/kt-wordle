@@ -17,7 +17,6 @@ from django.forms.models import model_to_dict
 from .models import WordleAnswers, WordleDayRanks, WordleRanks
 
 
-
 # Create your views here.
 # 화면 첫 진입 시에 사용할 view
 def main(request):
