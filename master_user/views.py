@@ -1,44 +1,43 @@
 # python
-from datetime import datetime
+from cmath import nan
+from datetime import datetime, timedelta
+import numpy as np
 
 # django
 from django.shortcuts import render, redirect, HttpResponse
 from django.utils import timezone
 from django.contrib import messages
+from django.db.models import Sum, Count, Max, Min, Avg
 
 # in app
 from .models import WordleAnswers, WordleDayRanks, WordleRanks
-
+from member.models import WordleUser
 
 # Create your views here.
 # 화면 첫 진입 시에 사용할 view
 def main(request):
-    # try:
-    #     user_id = request.session["user_id"]
-    #     user = WordleUser.objects.get(user_id=user_id)
-    #     if user.role == 0:  # 일반 유저이면 돌아가도록
-    #         messages.add_message(request, messages.ERROR, "권한이 없습니다.")
-    #         return redirect("member:index_test")
-    # except:
-    #     return render(
-    #         request, "index/aidle_main.html", {"login_status": "로그인 후 입력해주세요."}
-    #     )
+    try:
+        user_id = request.session["user_id"]
+        user = WordleUser.objects.get(user_id=user_id)
+        if user.role == 0:  # 일반 유저이면 돌아가도록
+            messages.add_message(request, messages.ERROR, "권한이 없습니다.")
+            return redirect("member:index_test")
+    except:
+        return render(
+            request, "index/aidle_main.html", {"login_status": "로그인 후 입력해주세요."}
+        )
 
     try:
         a = WordleAnswers.objects.get(date=timezone.now())
         data = a
     except:
         data = ""
-    try:
-        condata = (
-            WordleRanks.objects.filter(date=datetime.now())
-            .select_related("user")
-            .order_by("user_rank")
-        )
-    except:
-        condata = ""
 
-    return render(request, "master_user/main.html", {"data": data, "condata": condata})
+    return render(request, "master_user/main.html", {"data": data, "condata": ""})
+    # try:
+    #     condata = wordle_ranks.objects.filter(date=datetime.now()).select_related('user').order_by('user_rank')
+    # except:
+    #     condata = ''
 
 
 # 상위 10명 가져와서 저장하는 view
@@ -50,7 +49,7 @@ def get_top(request):
 
     # 10개밖에 안되니까 반복문 돌려서 필요한 정보 wordl_ranks에 입력
     for n, i in enumerate(a):
-        WordleRanks(user_rank=n + 1, date=i.recorded_at, user_id=i.user_id).save()
+        WordleRanks(user_rank=n + 1, date=i.create_at, user_id=i.user_id).save()
 
     # dayRanks 의 전체 데이터 삭제
     WordleDayRanks.objects.all().delete()
@@ -93,11 +92,59 @@ def delete_answer(request):
 # 더미 데이터 생성
 # 나중에 필히 지울것!!!
 def dummy(request):
-    WordleDayRanks(count=5, user_id=1, create_at=timezone.now()).save()
-    WordleDayRanks(count=2, user_id=1, create_at=timezone.now()).save()
-    WordleDayRanks(count=6, user_id=1, create_at=timezone.now()).save()
-    WordleDayRanks(count=4, user_id=1, create_at=timezone.now()).save()
-    WordleDayRanks(count=1, user_id=1, create_at=timezone.now()).save()
-    WordleDayRanks(count=3, user_id=1, create_at=timezone.now()).save()
+    WordleDayRanks(count=5, user_id=1, recorded_at=timezone.now()).save()
+    WordleDayRanks(count=2, user_id=2, recorded_at=timezone.now()).save()
+    WordleDayRanks(count=6, user_id=3, recorded_at=timezone.now()).save()
+    WordleDayRanks(count=4, user_id=4, recorded_at=timezone.now()).save()
+    WordleDayRanks(count=1, user_id=5, recorded_at=timezone.now()).save()
+    WordleDayRanks(count=3, user_id=6, recorded_at=timezone.now()).save()
+    WordleDayRanks(count=6, user_id=7, recorded_at=timezone.now()).save()
+    WordleDayRanks(count=4, user_id=8, recorded_at=timezone.now()).save()
+    WordleDayRanks(count=1, user_id=9, recorded_at=timezone.now()).save()
+    WordleDayRanks(count=3, user_id=10, recorded_at=timezone.now()).save()
 
     return HttpResponse("<p>성공</p>")
+
+def class_avg(request):
+    # load user's class
+    classes = [user_class[1] for user_class in WordleUser.CLASS_CHOICES]
+    user_cnt = np.zeros(10)
+    class_values = [{'class': '', 'count': 0, 'record': np.array([0, 0, 0, 0])} for i in range(10)]
+
+    # find user class, count, record
+    rank_user = WordleDayRanks.objects.select_related('user')
+    user_classes = np.array(rank_user.values('user__user_class'))
+    user_counts = np.array(rank_user.values('count'))
+    user_records = np.array(rank_user.values('recorded_at'))
+    
+    # add user values
+    for i in range(len(user_classes)):
+        class_idx = classes.index(user_classes[i]['user__user_class'])
+        class_values[class_idx]['count'] += user_counts[i]['count']
+        class_values[class_idx]['record'] += [
+            user_records[i]['recorded_at'].hour,
+            user_records[i]['recorded_at'].minute,
+            user_records[i]['recorded_at'].second,
+            user_records[i]['recorded_at'].microsecond,
+        ]
+        user_cnt[class_idx] += 1
+    
+    for idx in range(len(classes)):
+        class_values[idx]['class'] = classes[idx]
+        class_values[idx]['count'] = class_values[idx]['count'] / user_cnt[idx]
+        class_values[idx]['record'] = (class_values[idx]['record'] / user_cnt[idx]).astype(int)
+        if np.isnan(class_values[idx]['count']):
+            class_values[idx]['count'] = 0
+            class_values[idx]['record'] = [0, 0, 0, 0]
+        
+    
+    # change notation
+    np.set_printoptions(precision=6, suppress=True)
+
+    return render(
+        request,
+        "master_user/avg_test.html",
+        {
+            "class_values": class_values,
+        }
+    )

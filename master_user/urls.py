@@ -9,4 +9,5 @@ urlpatterns = [
     path("edit-answer/", views.edit_answer),
     path("delete_answer/", views.delete_answer),
     path("dummy_dayData/", views.dummy),
+    path("class_avg/", views.class_avg),
 ]
