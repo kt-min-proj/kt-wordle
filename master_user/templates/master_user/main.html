@@ -37,6 +37,7 @@
             <div class="winner_list">
                 <h3>오늘의 top10은!!</h3>
                 {% for i in condata %}
+                    {{ i.user }}
                     <div>{{ i.user_rank }}등 <strong>{{ i.user.user_name }}</strong></div>
                 {% endfor %}
                 <h3>축하합니다!</h3>
