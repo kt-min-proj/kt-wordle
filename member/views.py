@@ -69,10 +69,10 @@ def login_custom(request):
             if user.user_profile:
                 request.session["user_profile"] = user.user_profile.url
         if user.user_role == 1:
-            return render(request, "master_user/main.html")
-        return redirect("member:index_test")
+            return redirect("master:input_answer")
+        return redirect("game:main")
     else:
-        return render(request, "index/aidle_main.html")
+        return redirect("game:main")
 
 
 def logout_custom(request):
