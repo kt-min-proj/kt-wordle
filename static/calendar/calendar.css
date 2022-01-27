@@ -1,18 +1,22 @@
 :root {
   --calendar-color: gray;
 }
+
 table {
   clear: both;
 }
+
 th {
   height: 10px;
   width: 50px;
   background-color: var(--calendar-color);
   border-radius: 5%;
 }
+
 .colToday {
   background-color: #c24919 !important;
 }
+
 input.date {
   text-align: center;
   height: 100%;
@@ -20,8 +24,28 @@ input.date {
   border: none;
   background-color: #fffdc5;
 }
+
 .preMon,
 .nextMon {
   background-color: var(--calendar-color);
   border: none;
+}
+
+#date_name {
+  display: flex;
+  font-size: 30px;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+
+#rankBoard {
+  /*display: flex;*/
+  align-items: center;
+  justify-content: space-between;
+  margin: 6px;
+}
+
+#dayRankName {
+  width: 50%;
 }
