@@ -5,10 +5,13 @@ from datetime import datetime
 from django.shortcuts import render, redirect, HttpResponse
 from django.utils import timezone
 from django.contrib import messages
+from django.core import serializers
+from django.http import JsonResponse
 
 # in app
 from .models import WordleAnswers, WordleDayRanks, WordleRanks
 
+from django.forms.models import model_to_dict
 
 # Create your views here.
 # 화면 첫 진입 시에 사용할 view
@@ -46,7 +49,7 @@ def main(request):
 def get_top(request):
     # wordle_dayRanks(count=5, user_id=2, create_at=timezone.now()).save()
     # 제출한 시간이 최신 순서대로, 시간이 같다면 카운트가 적은 순서대로 탑 10
-    a = WordleDayRanks.objects.all().order_by("count", "create_at")[:10]
+    a = WordleDayRanks.objects.all().order_by("count", "recorded_at")[:10]
 
     # 10개밖에 안되니까 반복문 돌려서 필요한 정보 wordl_ranks에 입력
     for n, i in enumerate(a):
@@ -55,6 +58,25 @@ def get_top(request):
     # dayRanks 의 전체 데이터 삭제
     WordleDayRanks.objects.all().delete()
     return redirect("/master/main")
+
+
+def get_todayRanker(request):
+    try:
+        a = (
+            WordleRanks.objects.filter(date=datetime.now())
+            .select_related("user")
+            .order_by("user_rank")
+        )
+        data = []
+        for c in a:
+            options = dict()
+            options["user_rank"] = c.user_rank
+            options["user_name"] = c.user.user_name
+            data.append(options)
+    except:
+        data = "no rank yet"
+
+    return JsonResponse(data, safe=False)
 
 
 # 오늘자 정답 입력시 동작할 view
@@ -93,11 +115,11 @@ def delete_answer(request):
 # 더미 데이터 생성
 # 나중에 필히 지울것!!!
 def dummy(request):
-    WordleDayRanks(count=5, user_id=1, create_at=timezone.now()).save()
-    WordleDayRanks(count=2, user_id=1, create_at=timezone.now()).save()
-    WordleDayRanks(count=6, user_id=1, create_at=timezone.now()).save()
-    WordleDayRanks(count=4, user_id=1, create_at=timezone.now()).save()
-    WordleDayRanks(count=1, user_id=1, create_at=timezone.now()).save()
-    WordleDayRanks(count=3, user_id=1, create_at=timezone.now()).save()
+    WordleDayRanks(count=5, user_id=1, recorded_at=timezone.now()).save()
+    WordleDayRanks(count=2, user_id=1, recorded_at=timezone.now()).save()
+    WordleDayRanks(count=6, user_id=1, recorded_at=timezone.now()).save()
+    WordleDayRanks(count=4, user_id=1, recorded_at=timezone.now()).save()
+    WordleDayRanks(count=1, user_id=1, recorded_at=timezone.now()).save()
+    WordleDayRanks(count=3, user_id=1, recorded_at=timezone.now()).save()
 
     return HttpResponse("<p>성공</p>")
