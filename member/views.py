@@ -63,13 +63,7 @@ def login_custom(request):
             )
 
         else:
-<<<<<<< HEAD
             request.session["id"] = user.id
-=======
-
-            request.session["id"] = user.id
-
->>>>>>> 761e326adf2cf6ed60013e29ab0491aca8cea16b
             request.session["user_id"] = user.user_id
             request.session["user_name"] = user.user_name
             request.session["user_profile"] = user.user_profile.url
