@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     "cal.post",
     "game",
     "master_user",
+    "file",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -79,13 +80,17 @@ WSGI_APPLICATION = "config.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.mysql",
-        "NAME": "wordle",
-        "USER": "wordle",
-        "PASSWORD": "qotjdgns",
-        "HOST": "localhost",
-        "PORT": "3306",
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
     }
+    # "default": {
+    #   "ENGINE": "django.db.backends.mysql",
+    #  "NAME": "wordle",
+    # "USER": "WORDLE",
+    # "PASSWORD": "123412",
+    # "HOST": "146.56.160.85",
+    # "PORT": "3306",
+    # }
 }
 
 # Password validation
@@ -155,3 +160,8 @@ LOGGING = {
         },
     },
 }
+
+# 사진 저장하는 부분...
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR / "media"
+

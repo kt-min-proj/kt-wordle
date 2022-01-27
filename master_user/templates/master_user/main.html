@@ -5,28 +5,26 @@
     <meta charset="UTF-8">
     <title>강사 화면</title>
     <link rel="stylesheet" href="{% static 'master_user/css/style.css'%}">
-    <script defer src="{% static 'javascript/main.js'%}"></script>
 </head>
 <body style = "background-color: rgba(223,223,223,1);">
     <!-- 상단 문제 등록 부분 -->
     <section class="container">
         {% if data %}
+            <h1 class="today_keyword">오늘의 정답은!</h1>
+            <h3 class="today_answer">{{ data.answer }}</h3>
+
+            <section class="edit-delete">
+                <a class="edit_link" href="/master/edit-answer/">정답 수정하러가기</a>
+                <form class="delete_answer" method="get" action="/master/delete_answer">
+                    <button>정답 등록하기</button>
+                </form>
+            </section>
+        {% else %}
             <h1 class="today_keyword">오늘의 키워드를 등록해 주세요</h1>
             <form class="register_answer" method="get" action="/master/input_answer/">
                 <input class="answer" type="text" name="answer">
                 <input class="answer-button" type="submit" value="등록하기">
             </form>
-        {% else %}
-            <h1 class="today_keyword">오늘의 정답은!</h1>
-            <h3 class="today_answer">{{ data.answer }}</h3>
-
-            <section class="edit-delete">
-                <a class="edit_link" href="/master/edit-answer/">수정하러가기</a>
-                <form class="delete_answer" method="get" action="/master/delete_answer">
-                    <button>삭제하기</button>
-                </form>
-            </section>
-
         {% endif %}
     </section>
 
@@ -35,13 +33,19 @@
         <h2 class="today_winner">아래의 버튼을 눌러 오늘의 승자를 결정해 주세요</h2>
 
         {% if condata %}
+
             <div class="winner_list">
                 <h3>오늘의 top10은!!</h3>
                 {% for i in condata %}
-                    <div>{{ i.user_rank }}등 <strong>{{ i.user.name }}</strong></div>
+                    <div>{{ i.user_rank }}등 <strong>{{ i.user.user_name }}</strong></div>
                 {% endfor %}
                 <h3>축하합니다!</h3>
+                <!-- 결과 txt 파일로 저장하는 버튼 -->
+
             </div>
+            <form class="winner_form" action="{% url 'file:download' %}" method="get">
+                <input type="submit" value="결과 저장하기">
+            </form>
         {% else %}
             <form class="winner_form" method="get" action="/master/get_top">
                 <input type="submit" value="불러오기">

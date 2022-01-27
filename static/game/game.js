@@ -1,10 +1,10 @@
-var user = "KT"
-var answer = ("aidle").toLowerCase();
+answer = (answer).toLowerCase();
 var answer_list = new Array();
 var answer_list = Array.from(answer);
 var my_oppertunity = 0;
 var opportunity = answer_list.length + 1;
 var user_input_list = new Array();
+var recorded_at = "";
 
 //초기화면 설정 : 정답글자수에 맞춰서 칸이 나오게함
 for (j = 0; j < opportunity; j++) {
@@ -47,11 +47,24 @@ function game() {
                 }
             }
             else {
-
                 document.getElementById(c).className = 'textboxCorr'
                 document.getElementById(c).setAttribute('readonly', 'true')
             }
         }
+        if(answer_list.toString() == user_input_list.toString()){
+            var clear = new Date()
+            recorded_at = clear.getHours().toString() + ':' + clear.getMinutes().toString() + ':' + clear.getSeconds().toString() + ':' + clear.getMilliseconds().toString();
+            console.log(recorded_at)
+            console.log(user)
+            console.log(my_oppertunity)
+
+            document.send.recorded_at.value = recorded_at;
+            document.send.user.value = user;
+            document.send.count.value = my_oppertunity;
+
+            document.send.submit();
+        }
+
         if (my_oppertunity < opportunity) {
             my_oppertunity += 1;
         }

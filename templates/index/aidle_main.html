@@ -12,6 +12,7 @@
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src={% static "calendar/calendar.js" %}></script>
 <script src={% static "index/aidle.js" %}></script>
+<script src={% static "master_user/javascript/getTop10.js" %}></script>
 
 
 {% if messages %}
@@ -24,14 +25,15 @@
 {% include "member/login.html" %}
 
 <img src="{% static 'index/title.PNG' %}"
-     style="margin-left:600px; margin-top : 50px">
+     style="margin-left:600px; margin-top : 50px"> 
 
 
 <div class="rankar">
   <div class="aidl_text"
-       style="color:rgba(130,128,128,1); margin-top:20%; font-size: 45px;">
-    RANK
+       style="color:rgba(130,128,128,1); margin-top:10%; font-size: 45px;">
+       RANK
   </div>
+
 </div>
 <div class="wordle_container">
   <form>
@@ -39,12 +41,20 @@
   </form>
 </div>
 <div>
-  <div class="qmark" onclick="exampleopen()">❔</div>
-  <div><img class="example" src="{% static 'index/Example.PNG' %}"></div>
-  >>>>>>> cbe247c482dc29ec6082fd1705dc2f2ae789dea3
+  <div class = "qmark" onclick="exampleopen()">❔</div>
+  <div><img class = "example" src = "{% static 'index/Example.PNG' %}"></div>
+  <script> var answer = '{{ data.answer }}'</script>
   {% load static %}
   <script src="{% static 'game/game.js' %}"></script>
   <link rel="stylesheet" href="{% static 'game/game.css' %}"/>
+  <script> var answer = '{{ data.answer }}'</script>
+  <script> var user = '{{ request.session.id }}'</script>
+  <form method="post" name="send" action="{% url 'game:send' %}">
+      {% csrf_token %}
+    <input type="hidden" name="recorded_at" value=""> 
+    <input type="hidden" name="user" value=""> 
+    <input type="hidden" name="count" value=""> 
+    </form>
 </div>
 <div class="sideicon">
   <input type="checkbox" id="menuicon">
@@ -54,6 +64,10 @@
     <span></span>
   </label>
   <div class="sidebar">
+    <div class= "classrankmark" onclick="classrankopen()">🏫</div>
+    {% include "master_user/class_avg.html" %}
+    <div class = "classrank"></div>
+
     <table id='calendar'>
       <thead>
       <tr>

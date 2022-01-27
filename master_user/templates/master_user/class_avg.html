@@ -1,0 +1,17 @@
+<div class="classrank">
+    <table border="1">
+        <caption>반별 대항</caption>
+        <tr>
+            <th>반이름</th>
+            <th>횟수</th>
+            <th>완료시간</th>
+        </tr>
+        {% for class in class_values %}
+        <tr>
+            <td>{{ class.class }}</td>
+            <td>{{ class.count }}</td>
+            <td>{{ class.record.0 }}시 {{ class.record.1 }}분 {{ class.record.2 }}.{{ class.record.3 }}초</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>

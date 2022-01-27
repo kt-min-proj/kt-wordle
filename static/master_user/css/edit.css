@@ -4,7 +4,8 @@ body{
 }
 
 .edit-container{
-    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -18,11 +19,13 @@ body{
     justify-content: center;
     height: 40px;
     margin: 0 auto;
+    max-width: 400px;
+    width: 100%;
 }
 
 .edit-container .edit_answer .answer{
     border-radius: 3px 0 0 3px;
-    border: 3px solid #4b529f;
+    border: 3px solid #63b2af;
     border-right: none;
     padding: 10px;
     flex: 1;
@@ -30,7 +33,7 @@ body{
 
 .edit-container .edit_answer .answer-button{
     text-decoration: none;
-    background: #4b529f;
+    background: #63b2af;
     border: none;
     border-radius: 0 3px 3px 0;
     padding: 0 20px 0 20px;
