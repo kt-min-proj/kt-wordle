@@ -43,8 +43,14 @@ def calendar_rank(data: dict):
         data[f"{i}"] = []
 
         # TODO fix using comprehension
-        for ia in WDR.filter(user_rank=i).values("user_id", "user", ):
-            for ib in WU.filter(id=ia["user"]).values("user_name", "user_id", ):
+        for ia in WDR.filter(user_rank=i).values(
+            "user_id",
+            "user",
+        ):
+            for ib in WU.filter(id=ia["user"]).values(
+                "user_name",
+                "user_id",
+            ):
                 data[f"{i}"].append(ib["user_name"])
                 data[f"{i}"].append(ia["user_id"])
                 data[f"{i}"].append(ib["user_id"])
