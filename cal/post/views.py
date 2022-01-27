@@ -13,6 +13,10 @@ json_false_data = {
     "answer": "Today's answer",
 }
 
+WA = WordleAnswers.objects
+WDR = WordleDayRanks.objects
+WU = WordleUser.objects
+
 
 @csrf_exempt
 @api_view(["POST"])
@@ -20,9 +24,7 @@ def calendar_view(request):
     json_data = json.loads(request.body)
     _date = datetime.today().strftime("%Y-%m-%d")
 
-    for i in WordleAnswers.objects.filter(date=timeconvert(json_data["date"])).values(
-        "answer"
-    ):
+    for i in WA.filter(date=timeconvert(json_data["date"])).values("answer"):
         json_data["answer"] = i["answer"]
         json_data["rank"] = calendar_rank(
             json_data["rank"],
@@ -34,16 +36,15 @@ def calendar_view(request):
 
 
 def calendar_rank(data: dict):
-    d = WordleDayRanks.objects
-    o = WordleUser.objects
     for i in range(10):
-        # NOTE WordleUser 모델을 불러 와야 할것 같음
+        """
+        :return username, user_id, account_id
+        """
         data[f"{i}"] = []
 
         # TODO fix using comprehension
-        for ia in d.filter(user_rank=i).values("user_id", "user"):
-            # NOTE username, , account_id
-            for ib in o.filter(id=ia["user"]).values("user_name", "user_id"):
+        for ia in WDR.filter(user_rank=i).values("user_id", "user", ):
+            for ib in WU.filter(id=ia["user"]).values("user_name", "user_id", ):
                 data[f"{i}"].append(ib["user_name"])
                 data[f"{i}"].append(ia["user_id"])
                 data[f"{i}"].append(ib["user_id"])
