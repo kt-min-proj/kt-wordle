@@ -8,5 +8,6 @@ urlpatterns = [
     path("input_answer/", views.input_answer),
     path("edit-answer/", views.edit_answer),
     path("delete_answer/", views.delete_answer),
+    path("get_todayRanker/", views.get_todayRanker),
     path("dummy_dayData/", views.dummy),
 ]
