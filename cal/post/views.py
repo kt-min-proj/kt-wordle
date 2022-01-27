@@ -52,7 +52,7 @@ def calendar_rank(data: dict):
                 "user_id",
             ):
                 data[f"{i}"].append(ib["user_name"])
-                data[f"{i}"].append(ia["user_id"])
+                # data[f"{i}"].append(ia["user_id"]) # NOTE Think don't need
                 data[f"{i}"].append(ib["user_id"])
     return data
 
