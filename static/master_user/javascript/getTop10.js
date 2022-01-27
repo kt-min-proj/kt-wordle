@@ -5,7 +5,7 @@ ajax.then(function (response) {
 }).then(function (result) {
   let ranker = document.querySelector('.rankar');
   for (let i = 0; i < result.length; i++) {
-    if (typeof (result[0] !== 'undefined')) {
+    if (result !== 'no rank yet') {
       let div = document.createElement('div');
       div.innerHTML = result[i].user_rank + '등    ' + result[i].user_name;
       // NOTE 이거 왠만하면 css로 뺴시는 편이...
