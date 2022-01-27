@@ -19,8 +19,6 @@ class WordleDayRanks(models.Model):
     count = models.IntegerField()
     create_at = models.DateTimeField()
     user = models.ForeignKey(WordleUser, on_delete=models.CASCADE)
-    # NOTE 한개안에 두개의 fk를 사용시 오류발생
-    # name = models.ForeignKey(WordleUser, on_delete=models.CASCADE)
     user_rank = models.IntegerField(null=True)
 
     class Meta:
