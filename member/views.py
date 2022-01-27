@@ -68,9 +68,7 @@ def login_custom(request):
             request.session["user_name"] = user.user_name
             request.session["user_profile"] = user.user_profile.url
         if user.user_role == 1:
-            return render(
-            request, "master_user/main.html"
-        )
+            return render(request, "master_user/main.html")
         return redirect("member:index_test")
     else:
         return render(request, "index/aidle_main.html")
