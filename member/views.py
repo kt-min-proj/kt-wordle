@@ -66,7 +66,8 @@ def login_custom(request):
             request.session["id"] = user.id
             request.session["user_id"] = user.user_id
             request.session["user_name"] = user.user_name
-            request.session["user_profile"] = user.user_profile.url
+            if user.user_profile:
+                request.session["user_profile"] = user.user_profile.url
         if user.user_role == 1:
             return render(request, "master_user/main.html")
         return redirect("member:index_test")
@@ -75,9 +76,9 @@ def login_custom(request):
 
 
 def logout_custom(request):
-    del request.session["id"]
-    del request.session["user_id"]
-    del request.session["user_name"]
-    del request.session["user_profile"]
+    del request.session["id"]  # 유저 식별정보 삭제
+    del request.session["user_id"]  # 유저 아이디 삭제
+    del request.session["user_name"]  # 유저 이름 삭제
+    del request.session["user_profile"]  # 프로필 삭제
     request.session.flush()  # 전체 삭제
     return redirect("member:login")
