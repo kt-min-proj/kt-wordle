@@ -6,22 +6,22 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('master_user', '0001_initial'),
+        ("master_user", "0001_initial"),
     ]
 
     operations = [
         migrations.RenameField(
-            model_name='wordledayranks',
-            old_name='create_at',
-            new_name='recorded_at',
+            model_name="wordledayranks",
+            old_name="create_at",
+            new_name="recorded_at",
         ),
         migrations.AddField(
-            model_name='wordledayranks',
-            name='user_rank',
+            model_name="wordledayranks",
+            name="user_rank",
             field=models.IntegerField(null=True),
         ),
         migrations.AlterModelTable(
-            name='wordledayranks',
-            table='wordle_dayrank',
+            name="wordledayranks",
+            table="wordle_dayrank",
         ),
     ]
