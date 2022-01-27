@@ -20,11 +20,13 @@ def calendar_view(request):
     json_data = json.loads(request.body)
     _date = datetime.today().strftime("%Y-%m-%d")
 
-    values = WordleAnswers.objects.filter(date=json_data["date"])
-
-    for i in values:
-        json_data["answer"] = i.answer
-        json_data["rank"] = calendar_rank(json_data["rank"])
+    for i in WordleAnswers.objects.filter(date=timeconvert(json_data[
+                                                               "date"])).values(
+        "answer"):
+        json_data["answer"] = i['answer']
+        json_data["rank"] = calendar_rank(
+            json_data["rank"],
+        )
     if json_data["date"] == str(_date):
         return JsonResponse(json_false_data)
 
@@ -32,13 +34,6 @@ def calendar_view(request):
 
 
 def calendar_rank(data: dict):
-    dat = "2022-01-27"
-    b = [
-        str(y["answer"])
-        for y in
-        WordleAnswers.objects.filter(date=dat).values("answer")
-    ]
-
     d = WordleDayRanks.objects
     o = WordleUser.objects
     for i in range(10):
@@ -47,7 +42,7 @@ def calendar_rank(data: dict):
 
         # TODO fix using comprehension
         for ia in d.filter(user_rank=i).values('user_id', 'user'):
-            # NOTE username, user_rank, user_id
+            # NOTE username, , account_id
             for ib in o.filter(id=ia['user']).values('user_name', 'user_id'):
                 data[f'{i}'].append(ib['user_name'])
                 data[f'{i}'].append(ia['user_id'])

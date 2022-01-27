@@ -96,5 +96,6 @@ const submitData = async (data) => {
     }
   })
   document.getElementById("date_name").text = res.data.answer;
+  console.log(res.data)
   return res.data;
 }
