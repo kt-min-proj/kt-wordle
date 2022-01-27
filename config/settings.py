@@ -9,7 +9,6 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
-
 from pathlib import Path
 
 from django.contrib.messages import constants as messages
@@ -42,7 +41,6 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    # "rest_framework",
     "argon2",
 ]
 
@@ -83,9 +81,9 @@ DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
         "NAME": "wordle",
-        "USER": "WORDLE",
-        "PASSWORD": "123412",
-        "HOST": "146.56.160.85",
+        "USER": "wordle",
+        "PASSWORD": "qotjdgns",
+        "HOST": "localhost",
         "PORT": "3306",
     }
 }
@@ -117,7 +115,7 @@ TIME_ZONE = "Asia/Seoul"
 
 USE_I18N = True
 
-USE_TZ = True
+USE_TZ = False
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
@@ -139,4 +137,21 @@ LOGOUT_REDIRECT_URL = "/member/login/"
 # messages
 MESSAGE_TAGS = {
     messages.ERROR: "danger",
+}
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {
+        "console": {
+            "level": "DEBUG",
+            "class": "logging.StreamHandler",
+        }
+    },
+    "loggers": {
+        "django.db.backends": {
+            "handlers": ["console"],
+            "level": "DEBUG",
+        },
+    },
 }
