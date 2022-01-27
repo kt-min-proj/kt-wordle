@@ -1,6 +1,5 @@
 # python
 from datetime import datetime
-import numpy as np
 
 # django
 from django.shortcuts import render, redirect, HttpResponse
@@ -120,51 +119,3 @@ def dummy(request):
     WordleDayRanks(count=3, user_id=1, recorded_at=timezone.now()).save()
 
     return HttpResponse("<p>성공</p>")
-
-
-def class_avg(request):
-    # load user's class
-    classes = [user_class[1] for user_class in WordleUser.CLASS_CHOICES]
-    user_cnt = np.zeros(10)
-    class_values = [
-        {"class": "", "count": 0, "record": np.array([0, 0, 0, 0])} for i in range(10)
-    ]
-
-    # find user class, count, record
-    rank_user = WordleDayRanks.objects.select_related("user")
-    user_classes = np.array(rank_user.values("user__user_class"))
-    user_counts = np.array(rank_user.values("count"))
-    user_records = np.array(rank_user.values("recorded_at"))
-
-    # add user values
-    for i in range(len(user_classes)):
-        class_idx = classes.index(user_classes[i]["user__user_class"])
-        class_values[class_idx]["count"] += user_counts[i]["count"]
-        class_values[class_idx]["record"] += [
-            user_records[i]["recorded_at"].hour,
-            user_records[i]["recorded_at"].minute,
-            user_records[i]["recorded_at"].second,
-            user_records[i]["recorded_at"].microsecond,
-        ]
-        user_cnt[class_idx] += 1
-
-    for idx in range(len(classes)):
-        class_values[idx]["class"] = classes[idx]
-        class_values[idx]["count"] = class_values[idx]["count"] / user_cnt[idx]
-        class_values[idx]["record"] = (
-            class_values[idx]["record"] / user_cnt[idx]
-        ).astype(int)
-        if np.isnan(class_values[idx]["count"]):
-            class_values[idx]["count"] = 0
-            class_values[idx]["record"] = [0, 0, 0, 0]
-
-    # change notation
-    np.set_printoptions(precision=6, suppress=True)
-
-    return render(
-        request,
-        "index/aidle_main.html",
-        {
-            "class_values": class_values,
-        },
-    )

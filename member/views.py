@@ -53,13 +53,13 @@ def login_custom(request):
                 return render(
                     request,
                     "index/aidle_main.html",
-                    {"login_status": "ID 혹은 PASSWORD를 확인해주세요."},
+                    { "login_status": "ID 혹은 PASSWORD를 확인해주세요." },
                 )
         except:
             return render(
                 request,
                 "index/aidle_main.html",
-                {"login_status": "ID 혹은 PASSWORD를 확인해주세요."},
+                { "login_status": "ID 혹은 PASSWORD를 확인해주세요." },
             )
 
         else:
@@ -68,10 +68,10 @@ def login_custom(request):
             request.session["user_name"] = user.user_name
             request.session["user_profile"] = user.user_profile.url
         if user.user_role == 1:
-            return render(request, "master_user/main.html")
-        return redirect("member:index_test")
+            return redirect("master:input_answer")
+        return redirect("game:main")
     else:
-        return render(request, "index/aidle_main.html")
+        return redirect("game:main")
 
 
 def logout_custom(request):
