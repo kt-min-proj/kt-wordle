@@ -7,6 +7,7 @@ from django.utils import timezone
 from django.contrib import messages
 from django.core import serializers
 from django.http import JsonResponse
+
 # in app
 from .models import WordleAnswers, WordleDayRanks, WordleRanks
 
@@ -61,18 +62,21 @@ def get_top(request):
 
 def get_todayRanker(request):
     try:
-        a = WordleRanks.objects.filter(date=datetime.now()).select_related("user").order_by("user_rank")
+        a = (
+            WordleRanks.objects.filter(date=datetime.now())
+            .select_related("user")
+            .order_by("user_rank")
+        )
         data = []
         for c in a:
             options = dict()
-            options['user_rank']= c.user_rank
-            options['user_name'] = c.user.user_name
+            options["user_rank"] = c.user_rank
+            options["user_name"] = c.user.user_name
             data.append(options)
     except:
-        data = 'no rank yet'
+        data = "no rank yet"
 
     return JsonResponse(data, safe=False)
-
 
 
 # 오늘자 정답 입력시 동작할 view
