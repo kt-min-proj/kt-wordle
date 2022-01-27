@@ -54,12 +54,13 @@ def login_custom(request):
                     "index/aidle_main.html",
                     {"login_status": "ID 혹은 PASSWORD를 확인해주세요."},
                 )
-        except WordleUser.DoesNotExist as e:
+        except:
             return render(
                 request,
                 "index/aidle_main.html",
                 {"login_status": "ID 혹은 PASSWORD를 확인해주세요."},
             )
+
         else:
             request.session["user_id"] = user.user_id
             request.session["user_name"] = user.user_name
