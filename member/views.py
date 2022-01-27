@@ -62,6 +62,7 @@ def login_custom(request):
             )
 
         else:
+            request.session["id"] = user.id
             request.session["user_id"] = user.user_id
             request.session["user_name"] = user.user_name
             request.session["user_profile"] = user.user_profile.url
@@ -71,7 +72,9 @@ def login_custom(request):
 
 
 def logout_custom(request):
-    del request.session["user_id"]  # 개별 삭제
-    del request.session["user_name"]  # 개별 삭제
+    del request.session["id"]
+    del request.session["user_id"]
+    del request.session["user_name"]
+    del request.session["user_profile"]
     request.session.flush()  # 전체 삭제
     return redirect("member:login")
