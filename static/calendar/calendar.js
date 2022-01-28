@@ -87,7 +87,7 @@ const rankView = async (data) => {
     o = data.rank[i]
     if (typeof (o[0]) != 'undefined') {
       $("#scoreboard").append(`<div id="rankBoard">
-        <div id="dayrankRank">${i + 1}</div>
+        <div id="dayrankRank">${i}</div>
         <div id="dayrankName">${o[0]}</div>
         <div id="dayrankAccount">${o[1]}</div>
       </div>`)
