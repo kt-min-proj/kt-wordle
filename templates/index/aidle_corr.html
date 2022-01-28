@@ -1,0 +1,30 @@
+<head>
+    <title> CORRECT </title>
+    {% load static %}
+    <link href={% static 'index/aidle.css' %} rel="stylesheet" type="text/css"/>
+    <meta name='description' content="aidle">
+</head>
+
+<body style="background-color: rgba(223,223,223,1);">
+
+     {% if messages %}
+  <div class="text-center">
+    <div class="btn btn-{{ message.tags }} rounded-pill px-5 my-3">
+      {{ message }}
+    </div>
+  </div>
+{% endif %}
+{% include "member/login.html" %}
+<img src="{% static 'index/title.PNG' %}"
+     style="margin-left:600px; margin-top : 50px">
+
+     <div style ="position:absolute; top : 230px; left : 610px">
+     <h1 style="text-align: center; color :  rgba(130,128,128,1)">🎉 정답입니다! 🎉</h1>
+     <h1 style="text-align: center; color :  rgba(130,128,128,1)">수고하셨습니다</h1>
+    </div>
+
+    <a href = "../main">
+        <button class = "butt" style = "position : absolute; top : 500px; left : 670px;; font-size : 20px;">돌아가기</button>
+    </a>
+
+</body>

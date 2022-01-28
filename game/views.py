@@ -36,7 +36,7 @@ def sendinfo(request):
             recorded_at=timezone.now(), user_id=int(user), count=int(count)
         )
         record.save()
-        return redirect("../main/")
+        return render(request, "index/aidle_corr.html")
 
 
 # class average (class name, count, record)
