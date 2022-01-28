@@ -69,7 +69,7 @@ def class_avg(request):
     # average user values
     for idx in range(len(classes)):
         class_values[idx]["class"] = classes[idx]
-        class_values[idx]["count"] = class_values[idx]["count"] / user_cnt[idx]
+        class_values[idx]["count"] = round(class_values[idx]["count"] / user_cnt[idx], 1)
         class_values[idx]["record"] = (
             class_values[idx]["record"] / user_cnt[idx]
         ).astype(int)
