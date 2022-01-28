@@ -1,5 +1,6 @@
 # python
 import numpy as np
+import time
 from datetime import timezone
 
 # django
@@ -36,6 +37,7 @@ def sendinfo(request):
             recorded_at=timezone.now(), user_id=int(user), count=int(count)
         )
         record.save()
+        time.sleep(1.6)
         return render(request, "index/aidle_corr.html")
 
 
