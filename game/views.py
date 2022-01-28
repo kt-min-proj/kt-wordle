@@ -17,15 +17,16 @@ def mainplay(request):
     try:
         n = WordleAnswers.objects.get(date=timezone.now())
     except:
-        n = ''
+        n = ""
     data = n
     return render(
         request,
-        "index/aidle_main.html",{
+        "index/aidle_main.html",
+        {
             "data": data,
             "class_values": class_avg(request),
-            },
-        )
+        },
+    )
 
 
 # 맞춘사람 wordle_dayRank저장 (시간, userid, 횟수)
