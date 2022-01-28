@@ -5,7 +5,7 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.decorators import api_view
 
-from master_user.models import WordleAnswers, WordleDayRanks
+from master_user.models import WordleAnswers, WordleRanks
 from member.models import WordleUser
 
 json_false_data = {
@@ -14,7 +14,7 @@ json_false_data = {
 }
 
 WA = WordleAnswers.objects
-WDR = WordleDayRanks.objects
+WDR = WordleRanks.objects
 WU = WordleUser.objects
 
 
@@ -24,7 +24,7 @@ def calendar_view(request):
     json_data = json.loads(request.body)
     _date = datetime.today().strftime("%Y-%m-%d")
 
-    for i in WA.filter(date=timeconvert(json_data["date"])).values("answer"):
+    for i in WA.filter(date=json_data["date"]).values("answer"):
         json_data["answer"] = i["answer"]
         json_data["rank"] = calendar_rank(
             json_data["rank"],
@@ -57,7 +57,7 @@ def calendar_rank(data: dict):
     return data
 
 
-def timeconvert(date):
-    result = datetime.strptime(date, "%Y-%m-%d").strftime("%Y-%m-%d 00:00:00")
-
-    return result
+# def timeconvert(date):
+#     result = datetime.strptime(date, "%Y-%m-%d").strftime("%Y-%m-%d 00:00:00")
+#
+#     return result
