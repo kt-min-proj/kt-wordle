@@ -64,10 +64,7 @@
     <span></span>
   </label>
   <div class="sidebar">
-    <div class= "classrankmark" onclick="classrankopen()">🏫</div>
-    {% include "master_user/class_avg.html" %}
-    <div class = "classrank"></div>
-
+    <div style = "position : absolute; width:auto; height: 200px; top : 100px" >
     <table id='calendar'>
       <thead>
       <tr>
@@ -87,6 +84,10 @@
       </thead>
       <tbody></tbody>
     </table>
+  </div>
+    <div class= "classrankmark" onclick="classrankopen()">🏫</div>
+    {% include "master_user/class_avg.html" %}
+    <div class = "classrank"></div>
     <a id="date_name"></a>
     <div id="scoreboard"></div>
   </div>

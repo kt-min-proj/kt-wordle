@@ -1,5 +1,5 @@
 :root {
-  --calendar-color: gray;
+  --calendar-color: rgba(130, 128, 128, 1);
 }
 
 table {
@@ -11,10 +11,11 @@ th {
   width: 50px;
   background-color: var(--calendar-color);
   border-radius: 5%;
+  color : white;
 }
 
 .colToday {
-  background-color: #c24919 !important;
+  background-color: rgba(228, 145, 145, 1) !important;
 }
 
 input.date {
@@ -22,9 +23,8 @@ input.date {
   height: 100%;
   width: 100%;
   border: none;
-  background-color: #fffdc5;
+  background-color: rgba(197, 197, 197, 1); 
 }
-
 .preMon,
 .nextMon {
   background-color: var(--calendar-color);
@@ -33,17 +33,21 @@ input.date {
 
 #date_name {
   display: flex;
-  font-size: 30px;
+  font-size: 40px;
   align-items: center;
   text-align: center;
   justify-content: center;
+  margin-top : 340px;
+  font-family: 'Gill Sans MT';
+  color : rgba(65, 180, 176, 1);;
 }
 
 #rankBoard {
-  /*display: flex;*/
+  display: flex;
   align-items: center;
   justify-content: space-between;
   margin: 6px;
+  margin-top : 5px;
 }
 
 #dayrankName,
