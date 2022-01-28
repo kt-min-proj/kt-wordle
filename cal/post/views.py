@@ -55,3 +55,8 @@ def calendar_rank(data: dict):
                 # data[f"{i}"].append(ia["user_id"]) # NOTE Think don't need
                 data[f"{i}"].append(ib["user_id"])
     return data
+  
+# def timeconvert(date):
+#     result = datetime.strptime(date, "%Y-%m-%d").strftime("%Y-%m-%d 00:00:00")
+#
+#     return result
