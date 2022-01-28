@@ -69,7 +69,7 @@ def login_custom(request):
             if user.user_profile:
                 request.session["user_profile"] = user.user_profile.url
         if user.user_role == 1:
-            return redirect("master:input_answer")
+            return redirect("master:main")
         return redirect("game:main")
     else:
         return redirect("game:main")
