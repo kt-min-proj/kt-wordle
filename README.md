@@ -30,4 +30,4 @@ Wordle 퀴즈
 - `pip install -r requirements.txt` 로 requirements.txt 설치
 
 - [x] Mysql Host 서버 연결완료
-- [ ] (git 에서 파일영구적으로 지우기)[https://wani.kr/posts/2015/02/02/git-3-remove-file-forever/]
+- [ ] [git 에서 파일영구적으로 지우기](https://wani.kr/posts/2015/02/02/git-3-remove-file-forever/)
