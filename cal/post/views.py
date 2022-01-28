@@ -5,7 +5,7 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.decorators import api_view
 
-from master_user.models import WordleAnswers, WordleDayRanks
+from master_user.models import WordleAnswers, WordleRanks
 from member.models import WordleUser
 
 json_false_data = {
@@ -14,7 +14,7 @@ json_false_data = {
 }
 
 WA = WordleAnswers.objects
-WDR = WordleDayRanks.objects
+WDR = WordleRanks.objects
 WU = WordleUser.objects
 
 
